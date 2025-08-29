@@ -1,0 +1,195 @@
+version: '3.8'
+
+services:
+  # 백엔드 API 서버
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/planner_dev
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - DEBUG=true
+      - ENVIRONMENT=development
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - planner-network
+    restart: unless-stopped
+
+  # PostgreSQL 데이터베이스
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=planner_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - planner-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis 캐시
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - planner-network
+    restart: unless-stopped
+
+  # 프론트엔드 개발 서버
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_WS_URL=ws://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - planner-network
+    restart: unless-stopped
+
+  # 테스트 환경
+  test:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: test
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@test-db:5432/planner_test
+      - SECRET_KEY=test-secret-key
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - TESTING=true
+      - ENVIRONMENT=test
+    depends_on:
+      test-db:
+        condition: service_healthy
+    networks:
+      - planner-network
+    profiles:
+      - test
+
+  # 테스트용 데이터베이스
+  test-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=planner_test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - test_postgres_data:/var/lib/postgresql/data
+    networks:
+      - planner-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    profiles:
+      - test
+
+  # 모니터링 - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - planner-network
+    profiles:
+      - monitoring
+
+  # 모니터링 - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - planner-network
+    profiles:
+      - monitoring
+
+  # 로그 수집 - ELK Stack
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - planner-network
+    profiles:
+      - logging
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.8.0
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    networks:
+      - planner-network
+    profiles:
+      - logging
+
+volumes:
+  postgres_data:
+  test_postgres_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:
+  elasticsearch_data:
+
+networks:
+  planner-network:
+    driver: bridge 
