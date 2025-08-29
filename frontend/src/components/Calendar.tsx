@@ -7,7 +7,6 @@ import {
   IconButton,
   Chip,
   Tooltip,
-  Badge,
 } from '@mui/material';
 import {
   ChevronLeft as ChevronLeftIcon,
@@ -32,9 +31,8 @@ const Calendar: React.FC<CalendarProps> = ({ todos, planners, currentUserId, onD
   const [currentDate, setCurrentDate] = useState(new Date());
   const { darkMode } = useTheme();
 
-  // 현재 월의 첫 번째 날과 마지막 날 계산
+  // 현재 월의 첫 번째 날 계산
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-  const lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
   const startDate = new Date(firstDayOfMonth);
   startDate.setDate(startDate.getDate() - firstDayOfMonth.getDay());
 
@@ -199,7 +197,6 @@ const Calendar: React.FC<CalendarProps> = ({ todos, planners, currentUserId, onD
           {calendarDays.map((date, index) => {
             const dayTodos = getTodosForDate(date);
             const dayPlanners = getPlannersForDate(date);
-            const hasEvents = dayTodos.length > 0 || dayPlanners.length > 0;
 
             return (
               <Box

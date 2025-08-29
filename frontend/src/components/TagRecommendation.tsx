@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Button,
@@ -32,7 +32,7 @@ const TagRecommendation: React.FC<TagRecommendationProps> = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchRecommendations = async () => {
+  const fetchRecommendations = useCallback(async () => {
     if (!content.trim() || content.trim().length < 10) {
       setRecommendedTags([]);
       return;
@@ -49,7 +49,7 @@ const TagRecommendation: React.FC<TagRecommendationProps> = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [content, existingTags]);
 
   useEffect(() => {
     // 내용이 변경될 때마다 자동으로 추천 요청
@@ -58,7 +58,7 @@ const TagRecommendation: React.FC<TagRecommendationProps> = ({
     }, 2000); // 2초 딜레이로 변경
 
     return () => clearTimeout(timeoutId);
-  }, [content, existingTags]);
+  }, [fetchRecommendations]);
 
   const handleRefresh = () => {
     fetchRecommendations();
