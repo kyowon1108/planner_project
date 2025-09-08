@@ -542,4 +542,119 @@ export const activityAPI = {
   },
 };
 
+// ==== FEAT-004: 고도화된 AI 추천 시스템 타입 정의 ====
+export interface AIRecommendationAdvanced {
+  title: string;
+  description: string;
+  priority: 'low' | 'medium' | 'high';
+  category: string;
+  estimated_time: number;
+  confidence: number;
+  reasoning: string;
+  optimal_time?: string;
+}
+
+export interface ProductivityInsights {
+  productivity_score: number;
+  peak_hours: number[];
+  preferred_task_types: string[];
+  avg_completion_times: Record<string, number>;
+  collaboration_style: string;
+  work_patterns: Record<string, any>;
+  recommendations: string[];
+  weekly_trend: {
+    completed_tasks: number;
+    avg_daily_tasks: number;
+    productivity_change: string;
+  };
+}
+
+export interface TextAnalysisResult {
+  tags: string[];
+  priority: string;
+  category: string;
+  sentiment: string;
+  topics: string[];
+  confidence: number;
+  keywords: string[];
+  suggestions: {
+    estimated_time: number;
+    best_time_slots: string[];
+    related_tasks: string[];
+  };
+}
+
+// 고도화된 AI 추천 시스템 API 확장
+const aiAPIAdvanced = {
+  // 개인화된 스마트 할 일 추천
+  getSmartTodoRecommendations: async (context?: any): Promise<{
+    recommendations: AIRecommendationAdvanced[];
+    user_profile_summary: any;
+  }> => {
+    try {
+      const contextParam = context ? `?context=${encodeURIComponent(JSON.stringify(context))}` : '';
+      const response = await api.get(`/ai/recommendations/todos${contextParam}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('AI 할 일 추천 조회 실패:', error);
+      throw error;
+    }
+  },
+
+  // 추천 피드백 제출
+  submitRecommendationFeedback: async (recommendationId: string, feedback: any): Promise<void> => {
+    try {
+      await api.post('/ai/recommendations/feedback', {
+        recommendation_id: recommendationId,
+        feedback: feedback
+      });
+    } catch (error: any) {
+      console.error('추천 피드백 제출 실패:', error);
+      throw error;
+    }
+  },
+
+  // 생산성 인사이트 조회
+  getProductivityInsights: async (period: 'week' | 'month' | 'quarter' = 'week'): Promise<ProductivityInsights> => {
+    try {
+      const response = await api.get(`/ai/insights/productivity?period=${period}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('생산성 인사이트 조회 실패:', error);
+      throw error;
+    }
+  },
+
+  // 고도화된 텍스트 분석 (자동 태깅)
+  analyzeTextAdvanced: async (text: string, analysisType: 'comprehensive' | 'tags' | 'priority' | 'category' = 'comprehensive'): Promise<TextAnalysisResult> => {
+    try {
+      const response = await api.post('/ai/analyze/text', null, {
+        params: {
+          text: text,
+          analysis_type: analysisType
+        }
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('고급 텍스트 분석 실패:', error);
+      throw error;
+    }
+  },
+
+  // 팀 협업 제안
+  getTeamCollaborationSuggestions: async (teamId?: number): Promise<any> => {
+    try {
+      const teamParam = teamId ? `?team_id=${teamId}` : '';
+      const response = await api.get(`/ai/suggestions/team${teamParam}`);
+      return response.data;
+    } catch (error: any) {
+      console.error('팀 협업 제안 조회 실패:', error);
+      throw error;
+    }
+  }
+};
+
+// 기존 aiAPI에 고도화된 기능 병합
+Object.assign(aiAPI, aiAPIAdvanced);
+
 export default api; 
