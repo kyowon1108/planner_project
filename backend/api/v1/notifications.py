@@ -7,6 +7,7 @@ from models.user import User
 from database import get_db
 from api.v1.users import get_current_user
 from services.notification_service import NotificationService
+from websocket.notification_manager import notification_manager, NotificationType
 
 router = APIRouter(prefix="/notifications", tags=["notifications"])
 
@@ -140,4 +141,102 @@ def mark_notification_as_read(
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"알림 상태 업데이트 오류: {str(e)}") 
+        raise HTTPException(status_code=500, detail=f"알림 상태 업데이트 오류: {str(e)}")
+
+# 실시간 알림 설정 관리 엔드포인트들
+
+@router.get("/settings")
+def get_notification_settings(
+    current_user: User = Depends(get_current_user)
+) -> Dict[str, bool]:
+    """사용자의 알림 설정 조회"""
+    try:
+        user_id = getattr(current_user, 'id', None)
+        if user_id is None:
+            raise HTTPException(status_code=400, detail="사용자 ID가 없습니다.")
+        
+        settings = notification_manager.get_user_notification_settings(int(user_id))
+        return settings
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"알림 설정 조회 오류: {str(e)}")
+
+@router.put("/settings")
+def update_notification_settings(
+    settings: Dict[str, bool],
+    current_user: User = Depends(get_current_user)
+) -> Dict[str, str]:
+    """사용자의 알림 설정 업데이트"""
+    try:
+        user_id = getattr(current_user, 'id', None)
+        if user_id is None:
+            raise HTTPException(status_code=400, detail="사용자 ID가 없습니다.")
+        
+        # 유효한 알림 유형만 필터링
+        valid_types = [notification_type.value for notification_type in NotificationType]
+        filtered_settings = {
+            key: value for key, value in settings.items() 
+            if key in valid_types and isinstance(value, bool)
+        }
+        
+        notification_manager.update_user_notification_settings(int(user_id), filtered_settings)
+        return {"message": "알림 설정이 업데이트되었습니다."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"알림 설정 업데이트 오류: {str(e)}")
+
+@router.post("/test")
+async def send_test_notification(
+    current_user: User = Depends(get_current_user)
+) -> Dict[str, str]:
+    """테스트 알림 발송"""
+    try:
+        user_id = getattr(current_user, 'id', None)
+        if user_id is None:
+            raise HTTPException(status_code=400, detail="사용자 ID가 없습니다.")
+        
+        await notification_manager.send_notification(
+            user_id=int(user_id),
+            notification_type=NotificationType.SYSTEM_ANNOUNCEMENT,
+            title="🧪 테스트 알림",
+            message="실시간 알림 시스템이 정상적으로 작동중입니다!"
+        )
+        
+        return {"message": "테스트 알림이 발송되었습니다."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"테스트 알림 발송 오류: {str(e)}")
+
+@router.get("/types")
+def get_notification_types() -> Dict[str, List[Dict[str, Any]]]:
+    """사용 가능한 알림 유형 목록 조회"""
+    try:
+        types = []
+        for notification_type in NotificationType:
+            template = notification_manager.notification_templates.get(notification_type, {})
+            types.append({
+                "type": notification_type.value,
+                "name": notification_type.value.replace('_', ' ').title(),
+                "icon": template.get("icon", "🔔"),
+                "color": template.get("color", "#757575"),
+                "priority": template.get("priority", "medium").value,
+                "description": _get_notification_type_description(notification_type)
+            })
+        
+        return {"notification_types": types}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"알림 유형 조회 오류: {str(e)}")
+
+def _get_notification_type_description(notification_type: NotificationType) -> str:
+    """알림 유형별 설명 반환"""
+    descriptions = {
+        NotificationType.TEAM_INVITE: "팀 초대 알림",
+        NotificationType.TODO_ASSIGNED: "할 일 할당 알림", 
+        NotificationType.TODO_COMPLETED: "할 일 완료 알림",
+        NotificationType.TODO_COMMENT: "할 일 댓글 알림",
+        NotificationType.POST_COMMENT: "게시글 댓글 알림",
+        NotificationType.POST_LIKE: "게시글 좋아요 알림",
+        NotificationType.DEADLINE_APPROACHING: "마감 임박 알림",
+        NotificationType.DEADLINE_URGENT: "긴급 마감 알림",
+        NotificationType.DAILY_SUMMARY: "일일 요약 알림",
+        NotificationType.SYSTEM_ANNOUNCEMENT: "시스템 공지 알림"
+    }
+    
+    return descriptions.get(notification_type, "일반 알림")

@@ -1,32 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Box,
-  Alert,
-  AlertTitle,
   IconButton,
-  Collapse,
   Typography,
   Button,
-  Snackbar,
   Badge,
   Menu,
   MenuItem,
   ListItemIcon,
   ListItemText,
-  Divider,
 } from '@mui/material';
 import {
-  Close as CloseIcon,
   Notifications as NotificationsIcon,
   Group as GroupIcon,
   Assignment as AssignmentIcon,
   Article as ArticleIcon,
-  CheckCircle as CheckCircleIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import { inviteAPI, notificationAPI } from '../services/api';
 import { useWebSocket } from '../services/websocket';
 import { useTheme } from '../contexts/ThemeContext';
+import NotificationToast from './NotificationToast';
 
 interface NotificationBarProps {
   onInviteAccepted?: () => void;
@@ -46,45 +40,27 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ onInviteAccepted }) =
   // 실시간 알림 상태
   const [notifications, setNotifications] = useState<any[]>([]);
   const [notificationMenuAnchor, setNotificationMenuAnchor] = useState<null | HTMLElement>(null);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [currentToastNotification, setCurrentToastNotification] = useState<any>(null);
+  const [isLoadingNotifications, setIsLoadingNotifications] = useState(false);
+  const lastLoadTime = useRef(0);
+  const LOAD_THROTTLE_MS = 1000; // 1초 간격으로 제한
 
-  // WebSocket 연결 및 알림 리스너 설정
-  useEffect(() => {
-    if (user?.id) {
-      connect();
-      
-      // 실시간 알림 리스너
-      const handleNotification = (data: any) => {
-        setNotifications(prev => [data, ...prev]);
-        setSnackbarMessage(data.title);
-        setShowSnackbar(true);
-      };
-      
-      addListener('notification', handleNotification);
-      
-      // 기존 알림 로드
-      loadNotifications();
-      
-      return () => {
-        removeListener('notification', handleNotification);
-        disconnect();
-      };
+  // 알림 로딩 함수 (스로틀링 적용)
+  const loadNotifications = useCallback(async () => {
+    const now = Date.now();
+    
+    // 이미 로딩 중이거나 스로틀링 시간이 안지났으면 건너뛰기
+    if (isLoadingNotifications || (now - lastLoadTime.current < LOAD_THROTTLE_MS)) {
+      console.log('알림 로딩을 건너뜁니다:', {
+        isLoading: isLoadingNotifications,
+        timeSinceLastLoad: now - lastLoadTime.current
+      });
+      return;
     }
-  }, [user?.id]); // 의존성 배열에서 함수들 제거
 
-            // URL 파라미터 초대 알림 제거 (알림 메뉴에서 처리)
-          // useEffect(() => {
-          //   const urlParams = new URLSearchParams(window.location.search);
-          //   const code = urlParams.get('invite');
-          //   if (code) {
-          //     setInviteCode(code);
-          //     setShowNotification(true);
-          //   }
-          // }, []);
-
-  const loadNotifications = async () => {
     try {
+      lastLoadTime.current = now;
+      setIsLoadingNotifications(true);
       const data = await notificationAPI.getNotifications();
       console.log('로드된 알림:', data);
       
@@ -103,8 +79,52 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ onInviteAccepted }) =
     } catch (error) {
       console.error('알림 로드 실패:', error);
       setNotifications([]);
+    } finally {
+      setIsLoadingNotifications(false);
     }
-  };
+  }, [isLoadingNotifications, LOAD_THROTTLE_MS]);
+
+  // WebSocket 연결 및 알림 리스너 설정
+  useEffect(() => {
+    if (user?.id) {
+      connect();
+      
+      // 실시간 알림 리스너
+      const handleNotification = (data: any) => {
+        console.log('실시간 알림 수신:', data);
+        
+        // 새로운 NotificationToast 형식으로 데이터 변환
+        const toastData = data.type === 'realtime_notification' ? data.data : data;
+        
+        setNotifications(prev => [toastData, ...prev]);
+        setCurrentToastNotification(toastData);
+      };
+      
+      addListener('notification', handleNotification);
+      
+      return () => {
+        removeListener('notification', handleNotification);
+        disconnect();
+      };
+    }
+  }, [user?.id, connect, disconnect, addListener, removeListener]);
+
+  // 초기 알림 로드 (별도 useEffect)
+  useEffect(() => {
+    if (user?.id) {
+      loadNotifications();
+    }
+  }, [user?.id, loadNotifications]);
+
+            // URL 파라미터 초대 알림 제거 (알림 메뉴에서 처리)
+          // useEffect(() => {
+          //   const urlParams = new URLSearchParams(window.location.search);
+          //   const code = urlParams.get('invite');
+          //   if (code) {
+          //     setInviteCode(code);
+          //     setShowNotification(true);
+          //   }
+          // }, []);
 
     // URL 파라미터 초대 관련 함수들 제거 (알림 메뉴에서 처리)
   // const handleAcceptInvite = async () => { ... };
@@ -113,8 +133,10 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ onInviteAccepted }) =
 
   const handleNotificationClick = (event: React.MouseEvent<HTMLElement>) => {
     setNotificationMenuAnchor(event.currentTarget);
-    // 알림 메뉴 열 때마다 최신 알림 로드
-    loadNotifications();
+    // 메뉴가 닫혀있을 때만 알림 로드
+    if (!notificationMenuAnchor && !isLoadingNotifications) {
+      loadNotifications();
+    }
   };
 
   const handleNotificationMenuClose = () => {
@@ -207,6 +229,20 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ onInviteAccepted }) =
       // 실패 시 알림을 다시 추가
       setNotifications(prev => [...prev, notification]);
     }
+  };
+
+  // NotificationToast에서 액션 처리
+  const handleToastAction = async (action: string, data: any) => {
+    if (action === 'accept' || action === 'reject') {
+      await handleInviteAction(data, action);
+    } else if (action === 'view_todo') {
+      // 할 일 보기 - 해당 페이지로 이동
+      console.log('할 일 보기:', data);
+      // TODO: 실제 할 일 페이지로 라우팅
+    }
+    
+    // 토스트 알림 닫기
+    setCurrentToastNotification(null);
   };
 
   const handleMarkAllAsRead = async () => {
@@ -385,21 +421,12 @@ const NotificationBar: React.FC<NotificationBarProps> = ({ onInviteAccepted }) =
         </Collapse>
       )} */}
 
-      {/* 실시간 알림 스낵바 */}
-      <Snackbar
-        open={showSnackbar}
-        autoHideDuration={4000}
-        onClose={() => setShowSnackbar(false)}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <Alert 
-          onClose={() => setShowSnackbar(false)} 
-          severity="info" 
-          sx={{ width: '100%' }}
-        >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+      {/* 실시간 알림 토스트 */}
+      <NotificationToast
+        notification={currentToastNotification}
+        onClose={() => setCurrentToastNotification(null)}
+        onAction={handleToastAction}
+      />
     </>
   );
 };
