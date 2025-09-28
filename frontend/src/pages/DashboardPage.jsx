@@ -916,7 +916,7 @@ const DashboardPage = () => {
                               {post.title}
                             </Typography>
                           </Box>
-                          <Box sx={{ display: "flex", gap, mt.5 }}>
+                          <Box sx={{ display: "flex", gap: 1, mt: 0.5 }}>
                             <Typography
                               variant="caption"
                               sx={{ 

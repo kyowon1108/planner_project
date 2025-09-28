@@ -42,7 +42,7 @@ const AdvancedSearchFilter = ({
   return (
     <Box sx={{ mb }}>
       {/* 기본 검색 영역 */}
-      <Box sx={{ display: 'flex', gap, alignItems: 'center', mb }}>
+      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb }}>
         <TextField
           fullWidth
           placeholder="검색어를 입력하세요..."
@@ -83,7 +83,7 @@ const AdvancedSearchFilter = ({
 
       {/* 활성 필터 표시 */}
       {(searchTerm || searchType !== 'all') && (
-        <Box sx={{ display: 'flex', gap, alignItems: 'center', mb, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb, flexWrap: 'wrap' }}>
           <Typography variant="body2" color="text.secondary">
             활성 필터:
           </Typography>

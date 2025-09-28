@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { ThemeProvider } from './contexts/ThemeContext';
+import { CustomThemeProvider } from './contexts/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -192,11 +192,11 @@ const AppContent = () => {
 const App = () => {
   return (
     <ErrorBoundary>
-      <ThemeProvider>
+      <CustomThemeProvider>
         <AuthProvider>
           <AppContent />
         </AuthProvider>
-      </ThemeProvider>
+      </CustomThemeProvider>
     </ErrorBoundary>
   );
 };

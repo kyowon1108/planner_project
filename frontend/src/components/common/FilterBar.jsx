@@ -200,7 +200,7 @@ const FilterBar = ({
         sx={{
           display: 'flex',
           flexDirection === 'vertical' ? 'column' : 'row',
-          gap,
+          gap: 1,
           alignItems === 'vertical' ? 'stretch' : 'center',
           flexWrap: 'wrap',
         }}
@@ -215,7 +215,7 @@ const FilterBar = ({
         <Box
           sx={{
             display: 'flex',
-            gap,
+            gap: 1,
             alignItems: 'center',
             ml === 'horizontal' ? 'auto' : 0,
           }}
@@ -257,7 +257,7 @@ const FilterBar = ({
             sx={{
               display: 'flex',
               flexDirection === 'vertical' ? 'column' : 'row',
-              gap,
+              gap: 1,
               alignItems === 'vertical' ? 'stretch' : 'center',
               flexWrap: 'wrap',
               mt,
@@ -276,7 +276,7 @@ const FilterBar = ({
 
       {/* 활성 필터 표시 */}
       {hasActiveFilters() && (
-        <Box sx={{ mt, display: 'flex', gap, flexWrap: 'wrap' }}>
+        <Box sx={{ mt, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           {filters.map((filter) => {
             const value = values[filter.key];
             if (!value || value === '') return null;

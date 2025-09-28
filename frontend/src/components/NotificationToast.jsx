@@ -58,7 +58,7 @@ const NotificationToast = ({
     }
   }, [notification]);
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason: string) => {
+  const handleClose = (event: React | Event, reason: string) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -112,7 +112,7 @@ const NotificationToast = ({
     // 팀 초대 알림인 경우 수락/거절 버튼 표시
     if (notification.notification_type === 'team_invite') {
       return (
-        <Box sx={{ display: 'flex', gap, mt }}>
+        <Box sx={{ display: 'flex', gap: 1, mt }}>
           <button
             style={{
               padding: '4px 8px',
@@ -199,7 +199,7 @@ const NotificationToast = ({
         }}
         icon={getNotificationIcon(notification.notification_type)}
       >
-        <AlertTitle sx={{ mb.5, fontWeight: 'bold' }}>
+        <AlertTitle sx={{ mb: 0.5, fontWeight: 'bold' }}>
           {notification.title}
         </AlertTitle>
         <Typography variant="body2" sx={{ mb }}>

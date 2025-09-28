@@ -115,7 +115,7 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
         UX 분석 대시보드
       </Typography>
 
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
         {/* 사용성 점수 */}
         <Box sx={{ flex: '1 1 300px', minWidth }}>
           <Card>

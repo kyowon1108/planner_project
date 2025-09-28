@@ -12,7 +12,7 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProvider = ({ children }) => {
+export const CustomThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved ? JSON.parse(saved) : false;

@@ -12,7 +12,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
   TextField,
   IconButton,
@@ -425,7 +425,7 @@ const PostDetailPage = () => {
                               sx={{ 
                                 display: 'flex', 
                                 alignItems: 'center', 
-                                gap.5,
+                                gap: 0.5,
                                 px,
                                 py,
                                 borderRadius,
@@ -452,7 +452,7 @@ const PostDetailPage = () => {
                               sx={{ 
                                 display: 'flex', 
                                 alignItems: 'center', 
-                                gap.5,
+                                gap: 0.5,
                                 px,
                                 py,
                                 borderRadius,
@@ -500,7 +500,7 @@ const PostDetailPage = () => {
                             sx={{ 
                               fontWeight,
                               fontSize: '0.85rem',
-                              py.5,
+                              py: 0.5,
                             }}
                           />
                         ))}
@@ -683,7 +683,7 @@ const PostDetailPage = () => {
                                       <IconButton
                                         size="small"
                                         onClick={() => handleDeleteReply(reply.id)}
-                                        sx={{ color: 'error.main', p.5 }}
+                                        sx={{ color: 'error.main', p: 0.5 }}
                                       >
                                         <DeleteIcon sx={{ fontSize }} />
                                       </IconButton>

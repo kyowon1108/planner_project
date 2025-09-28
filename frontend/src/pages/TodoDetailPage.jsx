@@ -14,7 +14,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
 } from '@mui/material';
 import {
@@ -154,7 +154,7 @@ const TodoDetailPage = () => {
             sx={{
               display: 'grid',
               gridTemplateColumns ? '1fr' : '1fr 1fr',
-              gap,
+              gap: 1,
               alignItems: 'start',
             }}
           >
@@ -199,7 +199,7 @@ const TodoDetailPage = () => {
                       )}
                     </Typography>
                     
-                    <Box sx={{ display: 'flex', gap, mb }}>
+                    <Box sx={{ display: 'flex', gap: 1, mb }}>
                       <Chip
                         label={todo.is_completed ? '완료' : '진행중'}
                         color={todo.is_completed ? 'success' : 'primary'}
@@ -232,7 +232,7 @@ const TodoDetailPage = () => {
                         color ? '#ffffff' : '#2c3e50',
                         display: 'flex',
                         alignItems: 'center',
-                        gap,
+                        gap: 1,
                         mb,
                       }}
                     >
@@ -265,7 +265,7 @@ const TodoDetailPage = () => {
                         color ? '#ffffff' : '#2c3e50',
                         display: 'flex',
                         alignItems: 'center',
-                        gap,
+                        gap: 1,
                         mb,
                       }}
                     >
@@ -275,13 +275,13 @@ const TodoDetailPage = () => {
                     <Box sx={{ 
                       display: 'grid', 
                       gridTemplateColumns: 'auto 1fr', 
-                      gap,
+                      gap: 1,
                       p,
                       backgroundColor: 'rgba(0,0,0,0.02)',
                       borderRadius,
                       border: '1px solid rgba(0,0,0,0.05)',
                     }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <CalendarIcon sx={{ fontSize, color ? '#b0b0b0' : 'text.secondary' }} />
                         <Typography variant="body2" color="text.secondary" sx={{ fontWeight }}>
                           마감일:
@@ -291,7 +291,7 @@ const TodoDetailPage = () => {
                         {todo.due_date ? new Date(todo.due_date).toLocaleDateString() : '설정되지 않음'}
                       </Typography>
                       
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <PersonIcon sx={{ fontSize, color ? '#b0b0b0' : 'text.secondary' }} />
                         <Typography variant="body2" color="text.secondary" sx={{ fontWeight }}>
                           담당자:
@@ -303,7 +303,7 @@ const TodoDetailPage = () => {
                           : '지정되지 않음'}
                       </Typography>
                       
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <PersonIcon sx={{ fontSize, color ? '#b0b0b0' : 'text.secondary' }} />
                         <Typography variant="body2" color="text.secondary" sx={{ fontWeight }}>
                           작성자:
@@ -313,7 +313,7 @@ const TodoDetailPage = () => {
                         {todo.creator_name || '알 수 없음'}
                       </Typography>
                       
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <CalendarIcon sx={{ fontSize, color ? '#b0b0b0' : 'text.secondary' }} />
                         <Typography variant="body2" color="text.secondary" sx={{ fontWeight }}>
                           생성일:
@@ -357,7 +357,7 @@ const TodoDetailPage = () => {
                 </Grow>
 
                 <Fade in={animateIn} timeout={1200}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <Button
                       variant={todo.is_completed ? "outlined" : "contained"}
                       color={todo.is_completed ? "inherit" : "success"}
@@ -365,7 +365,7 @@ const TodoDetailPage = () => {
                       startIcon={<CheckCircleIcon />}
                       size="large"
                       sx={{
-                        py.5,
+                        py: 0.5,
                         fontWeight,
                         borderRadius,
                         textTransform: 'none',
@@ -382,7 +382,7 @@ const TodoDetailPage = () => {
                       onClick={() => navigate(`/todos/${todo.id}/edit`)}
                       size="large"
                       sx={{
-                        py.5,
+                        py: 0.5,
                         fontWeight,
                         borderRadius,
                         textTransform: 'none',
@@ -403,7 +403,7 @@ const TodoDetailPage = () => {
                       onClick={handleDelete}
                       size="large"
                       sx={{
-                        py.5,
+                        py: 0.5,
                         fontWeight,
                         borderRadius,
                         textTransform: 'none',

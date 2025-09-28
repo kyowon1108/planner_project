@@ -66,7 +66,7 @@ const SearchFilterBar = ({
         backdropFilter: 'blur(10px)',
       }}
     >
-      <Box sx={{ display: 'flex', gap, alignItems: 'center', flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
         {/* 검색 입력창 */}
         <TextField
           size="small"
@@ -123,7 +123,7 @@ const SearchFilterBar = ({
 
         {/* 활성 필터 표시 */}
         {(searchTerm || filterValue !== 'all') && (
-          <Box sx={{ display: 'flex', gap, alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
             <FilterIcon color="action" fontSize="small" />
             <Typography variant="caption" color="text.secondary">
               활성 필터:

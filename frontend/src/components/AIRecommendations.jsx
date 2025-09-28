@@ -178,7 +178,7 @@ const AIRecommendations = () => {
               </Typography>
             </Box>
             
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 1 }}>
               {/* 생산성 점수 */}
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="h3" sx={{ color: 'white', fontWeight: 'bold' }}>
@@ -214,7 +214,7 @@ const AIRecommendations = () => {
                 <Typography variant="body1" sx={{ color: 'white', fontWeight: 'bold', mb }}>
                   생산적 시간대
                 </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5, justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'center' }}>
                   {insights.peak_hours.map((hour) => (
                     <Chip
                       key={hour}
@@ -234,7 +234,7 @@ const AIRecommendations = () => {
               </Typography>
               <List dense>
                 {insights.recommendations.slice(0, 2).map((recommendation, index) => (
-                  <ListItem key={index} sx={{ py.5 }}>
+                  <ListItem key={index} sx={{ py: 0.5 }}>
                     <ListItemIcon sx={{ minWidth }}>
                       <IdeaIcon sx={{ fontSize, color: 'white' }} />
                     </ListItemIcon>
@@ -311,7 +311,7 @@ const AIRecommendations = () => {
                   </Typography>
 
                   {/* 메타데이터 */}
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap, mb }}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb }}>
                     <Chip
                       label={getPriorityLabel(recommendation.priority)}
                       size="small"
@@ -393,7 +393,7 @@ const AIRecommendations = () => {
                   </Box>
 
                   {/* 피드백 버튼 */}
-                  <Box sx={{ display: 'flex', gap }}>
+                  <Box sx={{ display: 'flex', gap: 1 }}>
                     <Tooltip title="도움이 됐어요">
                       <IconButton
                         size="small"

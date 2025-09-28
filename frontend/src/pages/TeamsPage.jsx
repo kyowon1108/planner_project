@@ -18,7 +18,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
 } from '@mui/material';
 import {
@@ -189,7 +189,7 @@ const TeamsPage = () => {
                     boxShadow: '0 8px 32px rgba(76, 175, 80, 0.3)',
                     borderRadius,
                     px,
-                    py.5,
+                    py: 0.5,
                     fontWeight,
                     textTransform: 'none',
                     fontSize: '1rem',
@@ -298,7 +298,7 @@ const TeamsPage = () => {
                         sx={{ 
                           display: 'flex', 
                           alignItems: 'center', 
-                          gap.5,
+                          gap: 0.5,
                           fontWeight,
                           color ? '#b0b0b0' : 'text.secondary',
                         }}
@@ -416,7 +416,7 @@ const TeamsPage = () => {
           새 팀 만들기
         </DialogTitle>
         <DialogContent sx={{ pt }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <TextField
               label="팀 이름"
               value={newTeamName}

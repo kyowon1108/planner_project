@@ -116,7 +116,7 @@ const LogViewer = ({ open, onClose }) => {
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb }}>
         <Typography variant="h6">로그 뷰어</Typography>
-        <Box sx={{ display: 'flex', gap }}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           <FormControl size="small" sx={{ minWidth }}>
             <InputLabel>로그 레벨</InputLabel>
             <Select
@@ -182,7 +182,7 @@ const LogViewer = ({ open, onClose }) => {
                   backgroundColor: 'background.paper'
                 }}
               >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap, mb.5 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
                   {getLevelIcon(log.level)}
                   <Chip 
                     label={getLevelText(log.level)} 

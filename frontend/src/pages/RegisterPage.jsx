@@ -167,7 +167,7 @@ const RegisterPage = () => {
     );
   };
 
-  const handleSubmit = async (e.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -226,7 +226,7 @@ const RegisterPage = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns ? '1fr' : '1fr 1fr',
-            gap,
+            gap: 1,
             alignItems: 'center',
           }}
         >
@@ -271,14 +271,14 @@ const RegisterPage = () => {
                 </Typography>
               </Fade>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                 {features.map((feature, index) => (
                   <Fade in={animateIn} timeout={1400 + index * 200} key={feature.text}>
                     <Box
                       sx={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap,
+                        gap: 1,
                         p,
                         borderRadius,
                         backgroundColor: 'rgba(255,255,255,0.1)',
@@ -589,7 +589,7 @@ const RegisterPage = () => {
                   disabled={loading || !isFormValid()}
                   startIcon={loading ? null : <PersonAddIcon />}
                   sx={{
-                    py.5,
+                    py: 0.5,
                     borderRadius,
                     fontSize: '1.1rem',
                     fontWeight,

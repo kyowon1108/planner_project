@@ -97,7 +97,7 @@ const EditPostPage = () => {
     }
   };
 
-  const handleSubmit = async (e.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.title.trim() || !formData.content.trim() || !formData.team_id) {

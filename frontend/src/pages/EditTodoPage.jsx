@@ -379,7 +379,7 @@ const EditTodoPage = () => {
                           onChange={(e) => setAssignedTo(e.target.value[])}
                           label="담당자 선택 (여러 명 선택 가능)"
                           renderValue={(selected) => (
-                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5 }}>
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                               {(selected[]).map((userId) => {
                                 const member = teamMembers.find(m => m.user_id === userId);
                                 return (
@@ -458,7 +458,7 @@ const EditTodoPage = () => {
                     }}
                   />
                   
-                  <Box sx={{ display: 'flex', gap, justifyContent: 'flex-end' }}>
+                  <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
                     <Button
                       variant="outlined"
                       onClick={() => navigate(`/todos/${todo.id}`)}

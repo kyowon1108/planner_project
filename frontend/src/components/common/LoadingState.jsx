@@ -45,7 +45,7 @@ const LoadingState = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap,
+        gap: 1,
         height ? '100vh' : 'auto',
         py ? 0 : 4,
       }}
@@ -93,7 +93,7 @@ const LoadingState = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap,
+        gap: 1,
         height ? '100vh' : 'auto',
         py ? 0 : 4,
       }}
@@ -101,7 +101,7 @@ const LoadingState = ({
       <Box
         sx={{
           display: 'flex',
-          gap,
+          gap: 1,
           alignItems: 'center',
         }}
       >

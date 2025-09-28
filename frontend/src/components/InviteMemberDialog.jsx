@@ -242,7 +242,7 @@ const InviteMemberDialog = ({
         </DialogTitle>
         
         <DialogContent>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap, mt }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt }}>
             {/* 이메일 입력 */}
             <TextField
               label="초대할 사용자의 이메일"
@@ -259,7 +259,7 @@ const InviteMemberDialog = ({
 
             {/* 사용자 검색 중 */}
             {isSearching && (
-              <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <CircularProgress size={20} />
                 <Typography variant="body2" color="text.secondary">
                   사용자 검색 중...
@@ -281,7 +281,7 @@ const InviteMemberDialog = ({
                   초대할 사용자
                 </Typography>
                 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Avatar sx={{ bgcolor: 'primary.main' }}>
                     <PersonIcon />
                   </Avatar>
@@ -327,11 +327,11 @@ const InviteMemberDialog = ({
             </FormControl>
 
             {/* 역할 설명 */}
-            <Box sx={{ p.5, bgcolor: '#f5f5f5', borderRadius }}>
+            <Box sx={{ p: 0.5, bgcolor: '#f5f5f5', borderRadius }}>
               <Typography variant="body2" color="text.secondary">
                 <strong>역할별 권한:</strong>
               </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt.5 }}>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
                 • <strong>관리자:</strong> 거의 모든 권한을 가집니다
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>

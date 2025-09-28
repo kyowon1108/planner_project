@@ -13,7 +13,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
   FormControl,
   InputLabel,
@@ -270,7 +270,7 @@ const PostsPage = () => {
                     color: 'white',
                     borderRadius,
                     px,
-                    py.5,
+                    py: 0.5,
                     fontWeight,
                     textTransform: 'none',
                     fontSize: '1rem',
@@ -294,7 +294,7 @@ const PostsPage = () => {
                     boxShadow: '0 8px 32px rgba(76, 175, 80, 0.3)',
                     borderRadius,
                     px,
-                    py.5,
+                    py: 0.5,
                     fontWeight,
                     textTransform: 'none',
                     fontSize: '1rem',
@@ -322,7 +322,7 @@ const PostsPage = () => {
                 onAdvancedFiltersToggle={() => setShowAdvancedFilters(!showAdvancedFilters)}
               >
                 {/* 고급 필터 영역 */}
-                <Box sx={{ display: 'flex', gap, alignItems: 'center' }}>
+                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                   <FormControl size="small" sx={{ minWidth }}>
                     <InputLabel>카테고리</InputLabel>
                     <Select
@@ -410,9 +410,9 @@ const PostsPage = () => {
                               sx={{ 
                                 display: 'flex', 
                                 alignItems: 'center', 
-                                gap.5,
+                                gap: 0.5,
                                 px.5,
-                                py.5,
+                                py: 0.5,
                                 borderRadius.5,
                                 backgroundColor: 'rgba(25, 118, 210, 0.1)',
                                 border: '1px solid rgba(25, 118, 210, 0.2)',
@@ -437,9 +437,9 @@ const PostsPage = () => {
                               sx={{ 
                                 display: 'flex', 
                                 alignItems: 'center', 
-                                gap.5,
+                                gap: 0.5,
                                 px.5,
-                                py.5,
+                                py: 0.5,
                                 borderRadius.5,
                                 backgroundColor: 'rgba(76, 175, 80, 0.1)',
                                 border: '1px solid rgba(76, 175, 80, 0.2)',
@@ -486,7 +486,7 @@ const PostsPage = () => {
                           sx={{ 
                             display: 'flex', 
                             alignItems: 'center', 
-                            gap.5,
+                            gap: 0.5,
                             fontWeight,
                           }}
                         >
@@ -501,7 +501,7 @@ const PostsPage = () => {
                             sx={{ 
                               display: 'flex', 
                               alignItems: 'center', 
-                              gap.5,
+                              gap: 0.5,
                               fontWeight,
                             }}
                           >
@@ -613,7 +613,7 @@ const PostsPage = () => {
                           background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
                           borderRadius,
                           px,
-                          py.5,
+                          py: 0.5,
                           fontWeight,
                           textTransform: 'none',
                         }}

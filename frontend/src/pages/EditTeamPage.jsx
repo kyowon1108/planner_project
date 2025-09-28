@@ -72,7 +72,7 @@ const EditTeamPage = () => {
     fetchTeam();
   }, [id]);
 
-  const handleSubmit = async (e.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.name.trim()) {

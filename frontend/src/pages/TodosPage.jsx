@@ -22,7 +22,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
 } from '@mui/material';
 import AdvancedSearchFilter from '../components/AdvancedSearchFilter.jsx';
@@ -384,7 +384,7 @@ const TodosPage = () => {
                     color: 'white',
                     borderRadius,
                     px,
-                    py.5,
+                    py: 0.5,
                     fontWeight,
                     textTransform: 'none',
                     fontSize: '1rem',
@@ -409,7 +409,7 @@ const TodosPage = () => {
                       boxShadow: '0 8px 32px rgba(76, 175, 80, 0.3)',
                       borderRadius,
                       px,
-                      py.5,
+                      py: 0.5,
                       fontWeight,
                       textTransform: 'none',
                       fontSize: '1rem',
@@ -438,7 +438,7 @@ const TodosPage = () => {
                 onAdvancedFiltersToggle={() => setShowAdvancedFilters(!showAdvancedFilters)}
               >
                 {/* 고급 필터 영역 */}
-                <Box sx={{ display: 'flex', gap, alignItems: 'center' }}>
+                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                   <FormControl size="small" sx={{ minWidth }}>
                     <InputLabel>상태 필터</InputLabel>
                     <Select
@@ -514,7 +514,7 @@ const TodosPage = () => {
                                 color ? '#ffffff' : '#2c3e50',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap,
+                                gap: 1,
                               }}
                             >
                               {todo.title}
@@ -596,7 +596,7 @@ const TodosPage = () => {
                         sx={{ 
                           display: 'flex', 
                           alignItems: 'center', 
-                          gap.5,
+                          gap: 0.5,
                           fontWeight,
                         }}
                       >
@@ -687,7 +687,7 @@ const TodosPage = () => {
                           background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
                           borderRadius,
                           px,
-                          py.5,
+                          py: 0.5,
                           fontWeight,
                           textTransform: 'none',
                         }}
@@ -726,7 +726,7 @@ const TodosPage = () => {
           새 할일 만들기
         </DialogTitle>
         <DialogContent sx={{ pt }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
             <TextField
               label="할일 제목"
               value={newTodoTitle}
@@ -789,7 +789,7 @@ const TodosPage = () => {
                     onChange={(e) => setNewTodoAssignedTo(e.target.value[])}
                     label="담당자 선택 (여러 명 선택 가능)"
                     renderValue={(selected) => (
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5 }}>
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                         {(selected[]).map((userId) => {
                           const member = teamMembers.find(m => m.user_id === userId);
                           return (

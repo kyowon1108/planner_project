@@ -144,7 +144,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
     <Card>
                <CardContent sx={{ p }}>
                  {/* 달력 헤더 */}
-         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb.5 }}>
+         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
           <Typography variant="h6" component="h2">
             <EventIcon sx={{ mr, verticalAlign: 'middle' }} />
             {currentDate.getFullYear()}년 {monthNames[currentDate.getMonth()]}
@@ -160,7 +160,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
         </Box>
 
                  {/* 요일 헤더 */}
-         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap.3, mb.5 }}>
+         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 0.3, mb: 0.5 }}>
            {dayNames.map((day) => (
              <Box
                key={day}
@@ -184,7 +184,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
          </Box>
 
                  {/* 달력 그리드 */}
-         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap.3 }}>
+         <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 0.3 }}>
           {calendarDays.map((date, index) => {
             const dayTodos = getTodosForDate(date);
             const dayPlanners = getPlannersForDate(date);

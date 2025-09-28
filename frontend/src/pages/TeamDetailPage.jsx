@@ -33,7 +33,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
 } from '@mui/material';
 import {
@@ -371,7 +371,7 @@ const TeamDetailPage = () => {
           </Slide>
 
           <Slide direction="up" in={animateIn} timeout={800}>
-            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 1 }}>
               {/* 팀 정보 */}
               <Fade in={animateIn} timeout={1000}>
                 <Paper
@@ -458,7 +458,7 @@ const TeamDetailPage = () => {
                       sx={{ 
                         display: 'flex', 
                         alignItems: 'center', 
-                        gap.5,
+                        gap: 0.5,
                         fontWeight,
                       }}
                     >
@@ -467,7 +467,7 @@ const TeamDetailPage = () => {
                     </Typography>
                     
                     {/* 팀 관리 버튼들 */}
-                    <Box sx={{ mt, display: 'flex', gap, flexWrap: 'wrap' }}>
+                    <Box sx={{ mt, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                       {/* 소유자만 권한 이전 가능 */}
                       {userRole === 'owner' && team.members && team.members.filter(m => m.role !== 'owner').length > 0 && (
                         <Button
@@ -579,7 +579,7 @@ const TeamDetailPage = () => {
                       {/* 역할별 통계 */}
                       <Box sx={{ 
                         display: 'flex', 
-                        gap, 
+                        gap: 1, 
                         flexWrap: 'wrap',
                         mb,
                         p,
@@ -664,7 +664,7 @@ const TeamDetailPage = () => {
                         멤버 검색 및 필터
                       </Typography>
                       
-                      <Box sx={{ display: 'flex', gap, flexWrap: 'wrap', alignItems: 'center' }}>
+                      <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center' }}>
                         <TextField
                           placeholder="멤버 검색..."
                           value={memberSearchTerm}
@@ -811,7 +811,7 @@ const TeamDetailPage = () => {
                                 
                                 {/* 관리 버튼들 */}
                                 {canChangeRole(member.role) && (
-                                  <Box sx={{ display: 'flex', gap }}>
+                                  <Box sx={{ display: 'flex', gap: 1 }}>
                                     <IconButton
                                       size="small"
                                       onClick={(e) => handleRoleChangeClick(e, member.user_id)}

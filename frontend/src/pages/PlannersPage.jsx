@@ -13,7 +13,7 @@ import {
   Fade,
   Grow,
   Slide,
-  useTheme,
+  useTheme as useMuiTheme,
   useMediaQuery,
 } from '@mui/material';
 import {
@@ -179,7 +179,7 @@ const PlannersPage = () => {
                     boxShadow: '0 8px 32px rgba(76, 175, 80, 0.3)',
                     borderRadius,
                     px,
-                    py.5,
+                    py: 0.5,
                     fontWeight,
                     textTransform: 'none',
                     fontSize: '1rem',
@@ -241,7 +241,7 @@ const PlannersPage = () => {
                                 color ? '#ffffff' : '#2c3e50',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap,
+                                gap: 1,
                               }}
                             >
                               {planner.title}
@@ -303,7 +303,7 @@ const PlannersPage = () => {
                         sx={{ 
                           display: 'flex', 
                           alignItems: 'center', 
-                          gap.5,
+                          gap: 0.5,
                           fontWeight,
                         }}
                       >

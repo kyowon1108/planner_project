@@ -177,7 +177,7 @@ const TeamProductivityInsights = () => {
           </Box>
         </Box>
         
-        <Box sx={{ display: 'flex', gap }}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           <FormControl size="small" sx={{ minWidth }}>
             <InputLabel>기간</InputLabel>
             <Select
@@ -271,7 +271,7 @@ const TeamProductivityInsights = () => {
                         
                         {/* 워크로드 */}
                         <Box sx={{ mt }}>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb.5 }}>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
                             <Typography variant="caption">워크로드</Typography>
                             <Typography variant="caption">{member.workload}%</Typography>
                           </Box>
@@ -384,7 +384,7 @@ const TeamProductivityInsights = () => {
                   <Typography variant="body2" color="text.secondary" gutterBottom>
                     생산적인 페어
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5 }}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                     {teamData.collaboration_patterns.most_productive_pairs.map((pair, index) => (
                       <Chip
                         key={index}
@@ -420,7 +420,7 @@ const TeamProductivityInsights = () => {
                   </Typography>
                 </Box>
                 
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                   {teamData.optimal_meeting_times.map((time, index) => (
                     <Chip
                       key={index}
@@ -448,7 +448,7 @@ const TeamProductivityInsights = () => {
                 
                 <List dense>
                   {teamData.team_strengths.map((strength, index) => (
-                    <ListItem key={index} sx={{ py.5 }}>
+                    <ListItem key={index} sx={{ py: 0.5 }}>
                       <ListItemIcon sx={{ minWidth }}>
                         <SuccessIcon sx={{ fontSize, color: 'success.main' }} />
                       </ListItemIcon>
@@ -476,7 +476,7 @@ const TeamProductivityInsights = () => {
                 
                 <List dense>
                   {teamData.improvement_areas.map((area, index) => (
-                    <ListItem key={index} sx={{ py.5 }}>
+                    <ListItem key={index} sx={{ py: 0.5 }}>
                       <ListItemIcon sx={{ minWidth }}>
                         <WarningIcon sx={{ fontSize, color: 'warning.main' }} />
                       </ListItemIcon>

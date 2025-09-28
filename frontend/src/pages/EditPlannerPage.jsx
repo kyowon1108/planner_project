@@ -98,7 +98,7 @@ const EditPlannerPage = () => {
     }
   }, [id]);
 
-  const handleSubmit = async (e.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -234,7 +234,7 @@ const EditPlannerPage = () => {
                     </Alert>
                   )}
 
-                  <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap }}>
+                  <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <TextField
                       fullWidth
                       label="플래너 제목"
@@ -267,7 +267,7 @@ const EditPlannerPage = () => {
                       }}
                     />
 
-                    <Box sx={{ display: 'flex', gap, flexDirection: { xs: 'column', md: 'row' } }}>
+                    <Box sx={{ display: 'flex', gap: 1, flexDirection: { xs: 'column', md: 'row' } }}>
                       <FormControl fullWidth>
                         <InputLabel>팀 선택</InputLabel>
                         <Select
@@ -328,7 +328,7 @@ const EditPlannerPage = () => {
                     
                     {/* Removed TimePicker */}
 
-                    <Box sx={{ display: 'flex', gap, justifyContent: 'flex-end', mt }}>
+                    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt }}>
                       <Button
                         variant="outlined"
                         onClick={() => navigate(`/planners/${id}`)}

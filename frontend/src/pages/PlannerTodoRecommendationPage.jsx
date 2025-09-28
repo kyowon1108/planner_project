@@ -236,7 +236,7 @@ const PlannerTodoRecommendationPage = () => {
                        >
                         <ListItemText
                           primary={
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                               <Typography variant="subtitle1" fontWeight="bold">
                                 {todo.title}
                               </Typography>
@@ -249,13 +249,13 @@ const PlannerTodoRecommendationPage = () => {
                             </Box>
                           }
                           secondary={
-                            <Typography variant="body2" color="text.secondary" sx={{ mt.5 }}>
+                            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
                               {todo.description}
                             </Typography>
                           }
                         />
                         <ListItemSecondaryAction>
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <Chip
                               label={todo.category}
                               size="small"
@@ -282,7 +282,7 @@ const PlannerTodoRecommendationPage = () => {
                     </Box>
                   )}
 
-                  <Box sx={{ display: 'flex', gap, justifyContent: 'flex-end', mt }}>
+                  <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt }}>
                     <Button
                       variant="outlined"
                       onClick={handleSkip}

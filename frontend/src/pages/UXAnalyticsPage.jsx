@@ -81,7 +81,7 @@ const UXAnalyticsPage = () => {
     }
   };
 
-  const handleTabChange = (event.SyntheticEvent, newValue) => {
+  const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
 
@@ -134,7 +134,7 @@ const UXAnalyticsPage = () => {
           사용자 경험 분석 및 성능 모니터링
         </Typography>
         
-        <Box sx={{ display: 'flex', gap, mb }}>
+        <Box sx={{ display: 'flex', gap: 1, mb }}>
           <Button
             variant="outlined"
             startIcon={<RefreshIcon />}
@@ -192,7 +192,7 @@ const UXAnalyticsPage = () => {
             세션 관리
           </Typography>
           
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {sessions.map((session) => (
               <Box key={session.id} sx={{ flex: '1 1 300px', minWidth }}>
                 <Card 
@@ -246,7 +246,7 @@ const UXAnalyticsPage = () => {
             성능 모니터링
           </Typography>
           
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             <Box sx={{ flex: '1 1 300px', minWidth }}>
               <Card>
                 <CardContent>

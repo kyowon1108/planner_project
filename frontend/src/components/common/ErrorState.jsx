@@ -104,7 +104,7 @@ const ErrorState = ({
       }}
       action={
         actions || (
-          <Box sx={{ display: 'flex', gap }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             {showRetry && (
               <Button
                 size="small"
@@ -172,7 +172,7 @@ const ErrorState = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap,
+        gap: 1,
         height ? '100vh' : 'auto',
         py ? 0 : 4,
         textAlign: 'center',
@@ -210,7 +210,7 @@ const ErrorState = ({
       </Box>
       
       {(showRetry || showHome || showBack || actions) && (
-        <Box sx={{ display: 'flex', gap, flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'center' }}>
           {actions}
           {showRetry && (
             <Button
@@ -266,7 +266,7 @@ const ErrorState = ({
       sx={{
         display: 'flex',
         alignItems: 'center',
-        gap,
+        gap: 1,
         py,
       }}
     >

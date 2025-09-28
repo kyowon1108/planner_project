@@ -114,7 +114,7 @@ const TagRecommendation = ({
   if (loading) {
     return (
       <Box sx={{ mb }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap, p }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, p }}>
           <CircularProgress size={20} />
           <Typography variant="body2" color="text.secondary">
             {showAdvancedAnalysis ? 'AI가 종합 분석 중입니다...' : 'AI가 태그를 추천하고 있습니다...'}
@@ -146,7 +146,7 @@ const TagRecommendation = ({
     <Box sx={{ mb }}>
       {/* 헤더 */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Badge badgeContent={recommendedTags.length} color="primary">
             <BrainIcon sx={{ fontSize, color: 'primary.main' }} />
           </Badge>
@@ -162,7 +162,7 @@ const TagRecommendation = ({
           )}
         </Box>
         
-        <Box sx={{ display: 'flex', gap }}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
           {showAdvancedAnalysis && (
             <Tooltip title={showAdvanced ? '간단히 보기' : '상세 분석 보기'}>
               <IconButton 
@@ -214,9 +214,9 @@ const TagRecommendation = ({
       {showAdvancedAnalysis && textAnalysis && (
         <Box>
           {/* 빠른 정보 카드 */}
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap, mb }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 1, mb }}>
             <Card variant="outlined" sx={{ p }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <TrendingIcon sx={{ fontSize }} color={getPriorityColor(textAnalysis.priority)} />
                 <Box>
                   <Typography variant="caption" color="text.secondary">우선순위</Typography>
@@ -228,7 +228,7 @@ const TagRecommendation = ({
             </Card>
 
             <Card variant="outlined" sx={{ p }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <CategoryIcon sx={{ fontSize, color: 'info.main' }} />
                 <Box>
                   <Typography variant="caption" color="text.secondary">카테고리</Typography>
@@ -238,7 +238,7 @@ const TagRecommendation = ({
             </Card>
 
             <Card variant="outlined" sx={{ p }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <TimeIcon sx={{ fontSize, color: 'warning.main' }} />
                 <Box>
                   <Typography variant="caption" color="text.secondary">예상 시간</Typography>
@@ -261,7 +261,7 @@ const TagRecommendation = ({
                 {/* 감정 분석 */}
                 <Box sx={{ mb }}>
                   <Typography variant="caption" color="text.secondary">감정 분석</Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Box 
                       sx={{ 
                         width, 
@@ -315,7 +315,7 @@ const TagRecommendation = ({
                 {/* 제안사항 */}
                 <Box>
                   <Typography variant="caption" color="text.secondary">AI 제안</Typography>
-                  <Box sx={{ mt.5 }}>
+                  <Box sx={{ mt: 0.5 }}>
                     <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight.4 }}>
                       • 최적 수행 시간: {textAnalysis.suggestions.best_time_slots.join(', ')}
                     </Typography>

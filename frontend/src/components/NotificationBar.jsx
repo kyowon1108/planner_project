@@ -350,7 +350,7 @@ const NotificationBar = ({ onInviteAccepted }) => {
                       
                       {/* 팀 초대 알림인 경우 수락/거절 버튼 */}
                       {notification.type === 'team_invite' && (
-                        <Box sx={{ display: 'flex', gap, ml }}>
+                        <Box sx={{ display: 'flex', gap: 1, ml }}>
                           <Button
                             size="small"
                             variant="outlined"
@@ -362,7 +362,7 @@ const NotificationBar = ({ onInviteAccepted }) => {
                             sx={{ 
                               minWidth: 'auto',
                               px,
-                              py.5,
+                              py: 0.5,
                               fontSize: '0.75rem',
                               borderColor: 'success.main',
                               color: 'success.main',
@@ -386,7 +386,7 @@ const NotificationBar = ({ onInviteAccepted }) => {
                             sx={{ 
                               minWidth: 'auto',
                               px,
-                              py.5,
+                              py: 0.5,
                               fontSize: '0.75rem',
                               borderColor: 'error.main',
                               color: 'error.main',

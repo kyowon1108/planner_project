@@ -15,6 +15,7 @@ import {
   Grow,
   Slide,
   useMediaQuery,
+  useTheme as useMuiTheme,
 } from '@mui/material';
 import {
   ArrowBack,
@@ -30,7 +31,7 @@ import { teamAPI, plannerAPI } from '../services/api';
 import { Team } from '../types';
 import Navbar from '../components/Navbar.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
-import { useTheme as useCustomTheme } from '../contexts/ThemeContext.jsx';
+import { useTheme } from '../contexts/ThemeContext.jsx';
 
 const CreatePlannerPage = () => {
   const [title, setTitle] = useState('');
@@ -44,7 +45,7 @@ const CreatePlannerPage = () => {
   const [animateIn, setAnimateIn] = useState(false);
   const navigate = useNavigate();
   
-  const { darkMode } = useCustomTheme();
+  const { darkMode } = useTheme();
   const muiTheme = useMuiTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
 
@@ -68,7 +69,7 @@ const CreatePlannerPage = () => {
     fetchTeams();
   }, []);
 
-  const handleSubmit = async (e.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -102,9 +103,9 @@ const CreatePlannerPage = () => {
       const createdPlanner = await plannerAPI.createPlanner(plannerData);
       navigate(`/planners/${createdPlanner.id}/todo-recommendations`, {
         state: {
-          plannerId.id,
-          plannerTitle.title,
-          plannerDescription.description,
+          plannerId: createdPlanner.id,
+          plannerTitle: createdPlanner.title,
+          plannerDescription: createdPlanner.description,
         }
       });
     } catch (err) {
@@ -175,7 +176,7 @@ const CreatePlannerPage = () => {
                     </Alert>
                   )}
 
-                  <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap }}>
+                  <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <TextField
                       fullWidth
                       label="플래너 제목"
@@ -208,7 +209,7 @@ const CreatePlannerPage = () => {
                       }}
                     />
 
-                    <Box sx={{ display: 'flex', gap, flexDirection: { xs: 'column', md: 'row' } }}>
+                    <Box sx={{ display: 'flex', gap: 1, flexDirection: { xs: 'column', md: 'row' } }}>
                       <FormControl fullWidth>
                         <InputLabel>팀 선택</InputLabel>
                         <Select
@@ -269,7 +270,7 @@ const CreatePlannerPage = () => {
                     
                     {/* TimePicker 제거 */}
 
-                    <Box sx={{ display: 'flex', gap, justifyContent: 'flex-end', mt }}>
+                    <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt }}>
                       <Button
                         variant="outlined"
                         onClick={() => navigate('/dashboard')}

@@ -261,7 +261,7 @@ const EmailVerificationPage = () => {
                 disabled={sendingCode}
                 startIcon={sendingCode ? <CircularProgress size={20} /> : <SendIcon />}
                 sx={{
-                  py.5,
+                  py: 0.5,
                   borderRadius,
                   fontSize: '1.1rem',
                   fontWeight,
@@ -305,7 +305,7 @@ const EmailVerificationPage = () => {
                   disabled={loading || verificationCode.length !== 6}
                   startIcon={loading ? <CircularProgress size={20} /> : <VerifiedIcon />}
                   sx={{
-                    py.5,
+                    py: 0.5,
                     borderRadius,
                     fontSize: '1.1rem',
                     fontWeight,

@@ -452,7 +452,7 @@ const PlannerDetailPage = () => {
 
           <Slide direction="up" in={animateIn} timeout={800}>
             <Fade in={animateIn} timeout={1000}>
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 2fr' }, gap }}>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 2fr' }, gap: 1 }}>
                 {/* 플래너 정보 */}
                 <Paper
                   elevation={8}
@@ -564,7 +564,7 @@ const PlannerDetailPage = () => {
                     {/* 검색 및 필터 컨트롤 */}
                     <Box sx={{ mb }}>
                       {/* 검색창과 정렬 */}
-                      <Box sx={{ display: 'flex', gap, mb, alignItems: 'center' }}>
+                      <Box sx={{ display: 'flex', gap: 1, mb, alignItems: 'center' }}>
                         <TextField
                           fullWidth
                           size="small"
@@ -620,7 +620,7 @@ const PlannerDetailPage = () => {
                               '& .MuiSelect-select': { 
                                 display: 'flex', 
                                 alignItems: 'center', 
-                                gap.5,
+                                gap: 0.5,
                                 fontSize: '0.8rem'
                               } 
                             }}
@@ -662,7 +662,7 @@ const PlannerDetailPage = () => {
                       </Box>
 
                       {/* 필터 버튼들 */}
-                      <Box sx={{ display: 'flex', gap, flexWrap: 'wrap' }}>
+                      <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                         {/* 상태 필터 버튼 */}
                         <Button
                           variant="outlined"
@@ -738,7 +738,7 @@ const PlannerDetailPage = () => {
 
                       {/* 활성 필터 표시 */}
                       {(searchTerm || statusFilter !== 'all' || priorityFilter !== 'all') && (
-                        <Box sx={{ display: 'flex', gap, flexWrap: 'wrap', alignItems: 'center', mt }}>
+                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', alignItems: 'center', mt }}>
                           <Typography variant="caption" color="text.secondary">
                             필터:
                           </Typography>
@@ -819,7 +819,7 @@ const PlannerDetailPage = () => {
                                     {todo.description}
                                   </Typography>
                                 )}
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5, mt.5 }}>
+                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
                                   {todo.assignee_names && todo.assignee_names.length > 0 ? (
                                     todo.assignee_names.map((name, index) => (
                                       <Chip
@@ -837,7 +837,7 @@ const PlannerDetailPage = () => {
                                   )}
                                 </Box>
                                 {todo.due_date && (
-                                  <Typography variant="caption" color="text.secondary" component="span" sx={{ display: 'block', mt.5 }}>
+                                  <Typography variant="caption" color="text.secondary" component="span" sx={{ display: 'block', mt: 0.5 }}>
                                     {getDetailedDeadlineText(todo.due_date)}
                                   </Typography>
                                 )}
@@ -953,7 +953,7 @@ const PlannerDetailPage = () => {
                           })}
                           label="담당자 선택 (여러 명 선택 가능)"
                           renderValue={(selected) => (
-                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5 }}>
+                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                               {(selected[]).map((userId) => {
                                 const member = teamMembers.find(m => m.user_id === userId);
                                 return (
@@ -1060,7 +1060,7 @@ const PlannerDetailPage = () => {
                   label="담당자 (여러 명 선택 가능)"
                   onChange={(e) => setTodoFormData({ ...todoFormData, assigned_to.target.value[] })}
                   renderValue={(selected) => (
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap.5 }}>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                       {(selected[]).map((userId) => {
                         const member = teamMembers.find(m => m.user_id === userId);
                         return (

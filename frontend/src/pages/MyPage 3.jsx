@@ -244,7 +244,7 @@ const MyPage = () => {
                 </Fade>
               )}
 
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap }}>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 1 }}>
                 {/* 프로필 정보 */}
                 <Box>
                   <Slide direction="left" in={true} timeout={800}>
@@ -313,7 +313,7 @@ const MyPage = () => {
                         />
                       </Box>
 
-                      <Box sx={{ display: 'flex', gap }}>
+                      <Box sx={{ display: 'flex', gap: 1 }}>
                         {!isEditingProfile ? (
                           <Button
                             fullWidth
@@ -476,7 +476,7 @@ const MyPage = () => {
                             }}
                             sx={{ mb }}
                           />
-                          <Box sx={{ display: 'flex', gap }}>
+                          <Box sx={{ display: 'flex', gap: 1 }}>
                             <Button
                               fullWidth
                               variant="contained"
@@ -558,7 +558,7 @@ const MyPage = () => {
             fullWidth
           >
             <DialogTitle sx={{ color: 'error.main' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <WarningIcon color="error" />
                 회원탈퇴 확인
               </Box>

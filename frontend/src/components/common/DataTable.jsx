@@ -44,7 +44,7 @@ interface DataTableProps<T> {
   getItemKey: (item) => string | number;
 }
 
-const DataTable = <T extends Record<string, any>>({
+const DataTable = <T extends Record({
   data,
   columns,
   loading = false,
@@ -125,7 +125,7 @@ const DataTable = <T extends Record<string, any>>({
       sx={{
         display: 'grid',
         gridTemplateColumns(),
-        gap,
+        gap: 1,
       }}
     >
       {data.map((item, index) => (
