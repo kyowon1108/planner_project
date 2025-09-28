@@ -205,7 +205,7 @@ const CreatePostPage = () => {
                     />
 
                     <FormControl fullWidth sx={{ mb: 3 }}>
-                      팀 선택</InputLabel>
+                      <InputLabel>팀 선택</InputLabel>
                       <Select
                         value={formData.team_id}
                         label="팀 선택"

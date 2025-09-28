@@ -55,7 +55,7 @@ const LogViewer = ({ open, onClose }) => {
       case LogLevel.INFO <InfoIcon fontSize="small" />;
       case LogLevel.WARN <WarningIcon fontSize="small" />;
       case LogLevel.ERROR <ErrorIcon fontSize="small" />;
-      default <InfoIcon fontSize="small" />;
+      default: return <InfoIcon fontSize="small" />;
     }
   };
 
@@ -65,7 +65,7 @@ const LogViewer = ({ open, onClose }) => {
       case LogLevel.INFO 'primary';
       case LogLevel.WARN 'warning';
       case LogLevel.ERROR 'error';
-      default 'default';
+      default: return 'default';
     }
   };
 
@@ -75,7 +75,7 @@ const LogViewer = ({ open, onClose }) => {
       case LogLevel.INFO 'INFO';
       case LogLevel.WARN 'WARN';
       case LogLevel.ERROR 'ERROR';
-      default 'UNKNOWN';
+      default: return 'UNKNOWN';
     }
   };
 

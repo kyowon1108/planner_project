@@ -56,7 +56,7 @@ const ErrorState = ({
         return '경고';
       case 'info':
         return '알림';
-      default '오류';
+      default: return '오류';
     }
   };
 
@@ -64,7 +64,7 @@ const ErrorState = ({
     switch (size) {
       case 'small': return 'body2';
       case 'large': return 'h6';
-      default 'body1';
+      default: return 'body1';
     }
   };
 
@@ -294,7 +294,7 @@ const ErrorState = ({
       return renderCard();
     case 'minimal':
       return renderMinimal();
-    default renderAlert();
+    default: return renderAlert();
   }
 };
 

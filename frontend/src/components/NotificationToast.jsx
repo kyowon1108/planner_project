@@ -92,7 +92,7 @@ const NotificationToast = ({
       case 'deadline_urgent': return <WarningIcon />;
       case 'daily_summary': return <AssessmentIcon />;
       case 'system_announcement': return <AnnouncementIcon />;
-      default <NotificationsIcon />;
+      default: return <NotificationsIcon />;
     }
   };
 
@@ -102,7 +102,7 @@ const NotificationToast = ({
       case 'high': return 'warning';
       case 'medium': return 'info';
       case 'low': return 'success';
-      default 'info';
+      default: return 'info';
     }
   };
 

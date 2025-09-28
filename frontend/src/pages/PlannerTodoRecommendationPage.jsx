@@ -123,7 +123,7 @@ const PlannerTodoRecommendationPage = () => {
         return 'error';
       case 'medium':
         return 'warning';
-      default 'default';
+      default: return 'default';
     }
   };
 
@@ -133,7 +133,7 @@ const PlannerTodoRecommendationPage = () => {
         return '높음';
       case 'medium':
         return '보통';
-      default '낮음';
+      default: return '낮음';
     }
   };
 

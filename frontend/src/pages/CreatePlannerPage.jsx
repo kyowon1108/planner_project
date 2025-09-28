@@ -122,7 +122,7 @@ const CreatePlannerPage = () => {
         <Box
           sx={{
             minHeight: '100vh',
-            background ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: darkMode ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             pt,
             pb,
           }}

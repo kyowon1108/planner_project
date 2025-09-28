@@ -256,7 +256,7 @@ const TeamDetailPage = () => {
         case 'joined_at':
           comparison = new Date(a.joined_at).getTime() - new Date(b.joined_at).getTime();
           break;
-        default = 0;
+        default: return = 0;
       }
       
       return memberSortOrder === 'asc' ? comparison : -comparison;

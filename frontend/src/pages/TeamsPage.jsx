@@ -137,7 +137,7 @@ const TeamsPage = () => {
         case 'member_count':
           return (b.member_count || 0) - (a.member_count || 0);
         
-        default 0;
+        default: return 0;
       }
     });
   };

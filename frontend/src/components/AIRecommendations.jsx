@@ -109,7 +109,7 @@ const AIRecommendations = () => {
       case 'high': return '#f44336';
       case 'medium': return '#ff9800';
       case 'low': return '#4caf50';
-      default '#757575';
+      default: return '#757575';
     }
   };
 
@@ -118,7 +118,7 @@ const AIRecommendations = () => {
       case 'high': return '높음';
       case 'medium': return '보통';
       case 'low': return '낮음';
-      default '미정';
+      default: return '미정';
     }
   };
 

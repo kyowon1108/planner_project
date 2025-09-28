@@ -108,7 +108,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
       case '높음': return 'warning';
       case '보통': return 'info';
       case '낮음': return 'default';
-      default 'info';
+      default: return 'info';
     }
   };
 
@@ -119,7 +119,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
       case '높음': return 'warning.main';
       case '보통': return 'info.main';
       case '낮음': return 'grey.500';
-      default 'info.main';
+      default: return 'info.main';
     }
   };
 
@@ -129,7 +129,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
       case '진행중': return 'primary';
       case '대기중': return 'warning';
       case '완료': return 'success';
-      default 'default';
+      default: return 'default';
     }
   };
 

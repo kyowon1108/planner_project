@@ -149,7 +149,7 @@ const TeamProductivityInsights = () => {
     switch (status) {
       case 'balanced': return <SuccessIcon color="success" />;
       case 'unbalanced': return <WarningIcon color="warning" />;
-      default <InsightsIcon color="primary" />;
+      default: return <InsightsIcon color="primary" />;
     }
   };
 

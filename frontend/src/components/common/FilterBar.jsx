@@ -189,7 +189,7 @@ const FilterBar = ({
           />
         );
 
-      default null;
+      default: return null;
     }
   };
 

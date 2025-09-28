@@ -36,7 +36,7 @@ const PageLayout = ({
           : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
       case 'solid':
         return darkMode ? '#1a1a2e' : '#f5f5f5';
-      default darkMode 
+      default: return darkMode 
           ? 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)'
           : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
     }

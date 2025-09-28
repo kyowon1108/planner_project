@@ -372,7 +372,7 @@ const PlannerDetailPage = () => {
         return 'warning';
       case 'low':
         return 'success';
-      default 'default';
+      default: return 'default';
     }
   };
 
@@ -386,7 +386,7 @@ const PlannerDetailPage = () => {
         return '낮음';
       case 'urgent':
         return '긴급';
-      default priority;
+      default: return priority;
     }
   };
 
@@ -400,7 +400,7 @@ const PlannerDetailPage = () => {
         return 'low';
       case '긴급':
         return 'urgent';
-      default 'medium';
+      default: return 'medium';
     }
   };
 

@@ -95,7 +95,7 @@ const PlannersPage = () => {
         return 'success';
       case '대기중':
         return 'warning';
-      default 'default';
+      default: return 'default';
     }
   };
 
@@ -121,7 +121,7 @@ const PlannersPage = () => {
           return a.title.localeCompare(b.title);
         case 'created_at':
           return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-        default 0;
+        default: return 0;
       }
     });
   };

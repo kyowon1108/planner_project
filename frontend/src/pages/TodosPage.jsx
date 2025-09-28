@@ -272,7 +272,7 @@ const TodosPage = () => {
           case 'author':
             return todo.creator_name?.toLowerCase().includes(searchLower);
           case 'all':
-          default titleMatch = todo.title?.toLowerCase().includes(searchLower);
+          default: return titleMatch = todo.title?.toLowerCase().includes(searchLower);
             const descriptionMatch = todo.description?.toLowerCase().includes(searchLower);
             const creatorMatch = todo.creator_name?.toLowerCase().includes(searchLower);
             const plannerMatch = todo.planner_name?.toLowerCase().includes(searchLower);
@@ -305,7 +305,7 @@ const TodosPage = () => {
         case 'created_at':
           return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
         
-        default 0;
+        default: return 0;
       }
     });
   };

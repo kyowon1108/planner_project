@@ -26,7 +26,7 @@ const LoadingState = ({
     switch (size) {
       case 'small': return 24;
       case 'large': return 48;
-      default 32;
+      default: return 32;
     }
   };
 
@@ -34,7 +34,7 @@ const LoadingState = ({
     switch (size) {
       case 'small': return 'body2';
       case 'large': return 'h6';
-      default 'body1';
+      default: return 'body1';
     }
   };
 
@@ -146,7 +146,7 @@ const LoadingState = ({
       return renderSkeleton();
     case 'dots':
       return renderDots();
-    default renderSpinner();
+    default: return renderSpinner();
   }
 };
 

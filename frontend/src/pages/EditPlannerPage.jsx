@@ -83,7 +83,7 @@ const EditPlannerPage = () => {
         }
         
         // 해당 플래너의 할일들만 필터링
-        const plannerTodos = todosData.filter(todo => todo.planner_id === parseInt(id!));
+        const plannerTodos = todosData.filter(todo => todo.planner_id === parseInt(id));
         setTodos(plannerTodos);
       } catch (error) {
         console.error('데이터 로딩 실패:', error);

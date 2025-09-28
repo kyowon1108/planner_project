@@ -374,7 +374,7 @@ const DashboardPage = () => {
                 }}
               >
                 <MenuItem value="">
-                  전체</em>
+                  <em>전체</em>
                 </MenuItem>
                 {teams.map((team) => (
                   <MenuItem key={team.id} value={team.id}>
