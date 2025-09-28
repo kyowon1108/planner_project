@@ -39,7 +39,7 @@ import traceback
 # 백엔드 모듈들 임포트
 from database import engine, get_db, init_db
 from models import Base
-from api.v1 import users, teams, planners, todos, posts, replies, likes, invites, notifications, activities, search, ai, email_verification, websocket
+from api.v1 import users, teams, planners, todos, posts, replies, likes, invites, notifications, activities, search, ai, email_verification, websocket, time_tracking, productivity
 from core.config import settings
 from core.logging_config import setup_logging
 from middleware.logging_middleware import LoggingMiddleware
@@ -149,6 +149,8 @@ app.include_router(notifications.router, prefix="/api/v1", tags=["notifications"
 app.include_router(activities.router, prefix="/api/v1", tags=["activities"])
 app.include_router(search.router, prefix="/api/v1", tags=["search"])
 app.include_router(ai.router, prefix="/api/v1", tags=["ai"])
+app.include_router(time_tracking.router, prefix="/api/v1", tags=["time-tracking"])
+app.include_router(productivity.router, prefix="/api/v1", tags=["productivity"])
 app.include_router(email_verification.router, prefix="/api/v1", tags=["email-verification"])
 app.include_router(websocket.router, prefix="/api/v1", tags=["websocket"])
 

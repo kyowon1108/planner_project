@@ -10,6 +10,8 @@ from .activity import Activity
 from .email_verification import EmailVerification
 from .like import Like
 from .reply import Reply
+from .time_entry import TimeEntry, TimeEntryPause, ProductivityMetrics
+from .recommendation import RecommendationFeedback, RecommendationHistory, AIInsight
 
 # Base 클래스 import
 from database import Base 

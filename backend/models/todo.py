@@ -40,6 +40,7 @@ class Todo(Base):
     planner = relationship("Planner", back_populates="todos")
     creator = relationship("User", foreign_keys=[created_by], back_populates="todos")
     assignees = relationship("User", secondary=todo_assignments, back_populates="assigned_todos")
+    time_entries = relationship("TimeEntry", back_populates="todo")
     
     # 추가 필드 (API 응답용) - ClassVar로 표시하여 ORM 매핑 제외
     planner_name: ClassVar[Optional[str]] = None

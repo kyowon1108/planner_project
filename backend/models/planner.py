@@ -27,4 +27,5 @@ class Planner(Base):
     team = relationship("Team", back_populates="planners")
     creator = relationship("User", back_populates="planners")
     todos = relationship("Todo", back_populates="planner", cascade="all, delete-orphan")
+    time_entries = relationship("TimeEntry", back_populates="planner")
  

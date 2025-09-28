@@ -13,7 +13,7 @@
 
 """
 
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, JSON, Float
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from database import Base
@@ -73,6 +73,15 @@ class User(Base):
     email_verification_token = Column(String, nullable=True)  # 이메일 인증 토큰 (선택)
     email_verification_expires = Column(DateTime(timezone=True), nullable=True)  # 토큰 만료 시간 (선택)
     
+    # AI 프로필 관련 필드 (FEAT-004)
+    ai_productivity_score = Column(Float, default=50.0)  # AI 생산성 점수 (0-100)
+    ai_peak_hours = Column(JSON, nullable=True)  # 생산적인 시간대 [9, 10, 14, 15] 형태
+    ai_preferred_task_types = Column(JSON, nullable=True)  # 선호 작업 유형 ["개발", "문서화"] 형태
+    ai_work_patterns = Column(JSON, nullable=True)  # 작업 패턴 데이터 (JSON)
+    ai_collaboration_style = Column(String(50), default="independent")  # 협업 스타일
+    ai_last_analysis = Column(DateTime(timezone=True), nullable=True)  # 마지막 AI 분석 시간
+    ai_recommendations_enabled = Column(Boolean, default=True)  # AI 추천 활성화 여부
+    
     # 시간 정보 필드 (자동 관리)
     created_at = Column(DateTime(timezone=True), default=TimeService.now_kst)  # 생성 시간 (한국 시간)
     updated_at = Column(DateTime(timezone=True), default=TimeService.now_kst, onupdate=TimeService.now_kst)  # 수정 시간 (자동 업데이트)
@@ -107,4 +116,15 @@ class User(Base):
     
     # 사용자가 작성한 댓글들 (일대다 관계)
     replies = relationship("Reply", back_populates="author")
+    
+    # 사용자의 시간 기록들 (일대다 관계)
+    time_entries = relationship("TimeEntry", back_populates="user")
+    
+    # 사용자의 생산성 메트릭들 (일대다 관계)
+    productivity_metrics = relationship("ProductivityMetrics", back_populates="user")
+    
+    # AI 추천 관련 관계들 (FEAT-004)
+    recommendation_feedbacks = relationship("RecommendationFeedback", back_populates="user")
+    recommendation_histories = relationship("RecommendationHistory", back_populates="user")
+    ai_insights = relationship("AIInsight", back_populates="user")
  
