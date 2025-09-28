@@ -61,9 +61,9 @@ import {
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
-import { usePermissions } from '../hooks/usePermissions';
+import { usePermissions } from '../hooks/usePermissions.jsx';
 import { plannerAPI, todoAPI, teamAPI } from '../services/api';
-import { Planner, Todo, TeamMember } from '../types';
+import { Planner, Todo, TeamMember } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
@@ -71,7 +71,7 @@ import QuickDateSelect from '../components/QuickDateSelect.jsx';
 import { getDetailedDeadlineText } from '../utils/dateUtils';
 
 const PlannerDetailPage = () => {
-  const { id } = useParams<{ id }>();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [planner, setPlanner] = useState(null);
@@ -782,10 +782,10 @@ const PlannerDetailPage = () => {
                       )}
                     </Box>
                     
-                    <List>
+                    
                       {filteredAndSortedTodos.map((todo, index) => (
                         <ListItem key={todo.id} divider={index < filteredAndSortedTodos.length - 1}>
-                          <ListItemIcon>
+                          
                             <Checkbox
                               checked={todo.is_completed}
                               onChange={() => handleToggleTodo(todo.id)}
@@ -813,7 +813,7 @@ const PlannerDetailPage = () => {
                               </Box>
                             }
                             secondary={
-                              <span>
+                              
                                 {todo.description && (
                                   <Typography variant="body2" color="text.secondary" component="span">
                                     {todo.description}
@@ -865,7 +865,7 @@ const PlannerDetailPage = () => {
                         </ListItem>
                       ))}
                       {filteredAndSortedTodos.length === 0 && (
-                        <ListItem>
+                        
                           <ListItemText
                             primary="할 일이 없습니다"
                             secondary="새로운 할 일을 추가해보세요"
@@ -881,8 +881,8 @@ const PlannerDetailPage = () => {
 
           {/* 할 일 추가 다이얼로그 */}
           <Dialog open={addTodoDialogOpen} onClose={() => setAddTodoDialogOpen(false)} maxWidth="sm" fullWidth>
-            <DialogTitle>할 일 추가</DialogTitle>
-            <DialogContent>
+            할 일 추가</DialogTitle>
+            
               <Typography variant="body2" color="text.secondary" sx={{ mb }}>
                 담당자를 지정하면 해당 사용자에게 할 일이 할당되어 책임을 명확히 할 수 있습니다.
               </Typography>
@@ -908,7 +908,7 @@ const PlannerDetailPage = () => {
                 sx={{ mb }}
               />
               <FormControl fullWidth sx={{ mb }}>
-                <InputLabel>우선순위</InputLabel>
+                우선순위</InputLabel>
                 <Select
                   value={todoFormData.priority}
                   label="우선순위"
@@ -943,7 +943,7 @@ const PlannerDetailPage = () => {
                       
                       {/* 개별 사용자 선택 */}
                       <FormControl fullWidth>
-                        <InputLabel>담당자 선택 (여러 명 선택 가능)</InputLabel>
+                        담당자 선택 (여러 명 선택 가능)</InputLabel>
                         <Select
                           multiple
                           value={todoFormData.assigned_to}
@@ -981,7 +981,7 @@ const PlannerDetailPage = () => {
                     </Box>
                   )}
             </DialogContent>
-            <DialogActions>
+            
               <Button onClick={() => setAddTodoDialogOpen(false)}>취소</Button>
               <Button 
                 onClick={() => {
@@ -997,8 +997,8 @@ const PlannerDetailPage = () => {
 
           {/* 할 일 수정 다이얼로그 */}
           <Dialog open={editTodoDialogOpen} onClose={() => setEditTodoDialogOpen(false)} maxWidth="sm" fullWidth>
-            <DialogTitle>할 일 수정</DialogTitle>
-            <DialogContent>
+            할 일 수정</DialogTitle>
+            
               <Typography variant="body2" color="text.secondary" sx={{ mb }}>
                 할 일 정보를 수정할 수 있습니다.
               </Typography>
@@ -1024,7 +1024,7 @@ const PlannerDetailPage = () => {
                 sx={{ mb }}
               />
               <FormControl fullWidth sx={{ mb }}>
-                <InputLabel>우선순위</InputLabel>
+                우선순위</InputLabel>
                 <Select
                   value={todoFormData.priority}
                   label="우선순위"
@@ -1053,7 +1053,7 @@ const PlannerDetailPage = () => {
                 />
               </Box>
               <FormControl fullWidth>
-                <InputLabel>담당자 (여러 명 선택 가능)</InputLabel>
+                담당자 (여러 명 선택 가능)</InputLabel>
                 <Select
                   multiple
                   value={todoFormData.assigned_to}
@@ -1082,7 +1082,7 @@ const PlannerDetailPage = () => {
                 </Select>
               </FormControl>
             </DialogContent>
-            <DialogActions>
+            
               <Button onClick={() => setEditTodoDialogOpen(false)}>취소</Button>
               <Button 
                 onClick={handleUpdateTodo}

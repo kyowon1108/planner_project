@@ -15,7 +15,7 @@ import {
   Assignment,
   Flag,
 } from '@mui/icons-material';
-import { Todo, Planner } from '../types';
+import { Todo, Planner } from '../types.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 
 const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, onPlannerClick }) => {
@@ -141,7 +141,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
   const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
 
   return (
-    <Card>
+    
                <CardContent sx={{ p }}>
                  {/* 달력 헤더 */}
          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0.5 }}>
@@ -149,7 +149,7 @@ const Calendar = ({ todos, planners, currentUserId, onDateClick, onTodoClick, on
             <EventIcon sx={{ mr, verticalAlign: 'middle' }} />
             {currentDate.getFullYear()}년 {monthNames[currentDate.getMonth()]}
           </Typography>
-          <Box>
+          
             <IconButton onClick={goToPreviousMonth} size="small">
               <ChevronLeftIcon />
             </IconButton>

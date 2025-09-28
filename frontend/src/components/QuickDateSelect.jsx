@@ -15,7 +15,7 @@ const QuickDateSelect = ({ onDateSelect, disabled = false }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event.MouseEvent<HTMLElement>) => {
+  const handleClick = (event.MouseEvent) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -31,7 +31,7 @@ const QuickDateSelect = ({ onDateSelect, disabled = false }) => {
   const quickOptions = getQuickDateOptions();
 
   return (
-    <Box>
+    
       <Button
         variant="outlined"
         size="small"

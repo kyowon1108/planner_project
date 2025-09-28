@@ -10,7 +10,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '../../contexts/ThemeContext.jsx';
-import Navbar from '../Navbar';
+import Navbar from '../Navbar.jsx';
 
 const PageLayout = ({
   children,
@@ -110,7 +110,7 @@ const PageLayout = ({
 
           {/* 메인 콘텐츠 */}
           <Slide direction="up" in={animateIn} timeout={800 + animationDelay}>
-            <Box>
+            
               {children}
             </Box>
           </Slide>

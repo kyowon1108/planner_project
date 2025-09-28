@@ -35,7 +35,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { postAPI, likeAPI, teamAPI } from '../services/api';
-import { Post } from '../types';
+import { Post } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
@@ -311,7 +311,7 @@ const PostsPage = () => {
           </Slide>
 
           <Slide direction="up" in={animateIn} timeout={800}>
-            <Box>
+            
               {/* 통합 검색 및 필터링 */}
               <AdvancedSearchFilter
                 searchTerm={searchTerm}
@@ -324,7 +324,7 @@ const PostsPage = () => {
                 {/* 고급 필터 영역 */}
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>카테고리</InputLabel>
+                    카테고리</InputLabel>
                     <Select
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
@@ -339,7 +339,7 @@ const PostsPage = () => {
                     </Select>
                   </FormControl>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>팀 필터</InputLabel>
+                    팀 필터</InputLabel>
                     <Select
                       value={selectedTeam}
                       onChange={(e) => setSelectedTeam(e.target.value)}
@@ -354,7 +354,7 @@ const PostsPage = () => {
                     </Select>
                   </FormControl>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>정렬</InputLabel>
+                    정렬</InputLabel>
                     <Select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}

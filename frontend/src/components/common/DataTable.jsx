@@ -16,35 +16,37 @@ import {
 } from '@mui/material';
 import { useTheme } from '../../contexts/ThemeContext.jsx';
 
-interface DataTableColumn<T> {
-  key;
-  label;
-  render: (item, index) => React.ReactNode;
-  width: string | number;
-  align: 'left' | 'center' | 'right';
-}
+/**
+ * @typedef {Object} DataTableColumn
+ * @property {string} key
+ * @property {string} label
+ * @property {function} render
+ * @property {string|number} width
+ * @property {'left'|'center'|'right'} align
+ */
 
-interface DataTableProps<T> {
-  data;
-  columns<T>[];
-  loading: boolean;
-  emptyMessage: string;
-  onRowClick: (item) => void;
-  actions: (item) => React.ReactNode;
-  variant: 'card' | 'table' | 'list';
-  gridColumns: number | { xs: number; sm: number; md: number; lg: number };
-  animationDelay: number;
-  animateIn: boolean;
-  elevation: number;
-  spacing: number;
-  showActions: boolean;
-  selectable: boolean;
-  selectedItems: T[];
-  onSelectionChange: (items) => void;
-  getItemKey: (item) => string | number;
-}
+/**
+ * @typedef {Object} DataTableProps
+ * @property {Array} data
+ * @property {Array} columns
+ * @property {boolean} loading
+ * @property {string} emptyMessage
+ * @property {function} onRowClick
+ * @property {function} actions
+ * @property {'card'|'table'|'list'} variant
+ * @property {number|Object} gridColumns
+ * @property {number} animationDelay
+ * @property {boolean} animateIn
+ * @property {number} elevation
+ * @property {number} spacing
+ * @property {boolean} showActions
+ * @property {boolean} selectable
+ * @property {Array} selectedItems
+ * @property {function} onSelectionChange
+ * @property {function} getItemKey
+ */
 
-const DataTable = <T extends Record({
+const DataTable = ({
   data,
   columns,
   loading = false,
@@ -52,7 +54,7 @@ const DataTable = <T extends Record({
   onRowClick,
   actions,
   variant = 'card',
-  gridColumns = { xs, sm, md, lg },
+  gridColumns = { xs: 1, sm: 2, md: 3, lg: 4 },
   animationDelay = 0,
   animateIn = true,
   elevation = 8,
@@ -62,9 +64,9 @@ const DataTable = <T extends Record({
   selectedItems = [],
   onSelectionChange,
   getItemKey = (item) => item.id || item.key || JSON.stringify(item),
-}: DataTableProps<T>) => {
+}) => {
   const { darkMode } = useTheme();
-  const muiTheme = useMuiTheme();
+  const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
 
   const handleRowClick = (item) => {

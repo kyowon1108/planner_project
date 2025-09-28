@@ -118,7 +118,7 @@ const LogViewer = ({ open, onClose }) => {
         <Typography variant="h6">로그 뷰어</Typography>
         <Box sx={{ display: 'flex', gap: 1 }}>
           <FormControl size="small" sx={{ minWidth }}>
-            <InputLabel>로그 레벨</InputLabel>
+            로그 레벨</InputLabel>
             <Select
               value={filterLevel}
               label="로그 레벨"

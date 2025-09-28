@@ -28,7 +28,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { teamAPI, plannerAPI } from '../services/api';
-import { Team } from '../types';
+import { Team } from '../types.jsx';
 import Navbar from '../components/Navbar.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
@@ -211,7 +211,7 @@ const CreatePlannerPage = () => {
 
                     <Box sx={{ display: 'flex', gap: 1, flexDirection: { xs: 'column', md: 'row' } }}>
                       <FormControl fullWidth>
-                        <InputLabel>팀 선택</InputLabel>
+                        팀 선택</InputLabel>
                         <Select
                           value={teamId}
                           label="팀 선택"
@@ -231,7 +231,7 @@ const CreatePlannerPage = () => {
                       </FormControl>
 
                       <FormControl fullWidth>
-                        <InputLabel>상태</InputLabel>
+                        상태</InputLabel>
                         <Select
                           value={status}
                           label="상태"

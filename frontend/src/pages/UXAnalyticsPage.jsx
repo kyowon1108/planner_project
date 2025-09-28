@@ -15,16 +15,16 @@ import {
 } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import {
-  Analytics,
-  Timeline,
-  Speed,
-  TrendingUp,
-  Download,
-  Refresh,
+  Analytics as AnalyticsIcon,
+  Timeline as TimelineIcon,
+  Speed as SpeedIcon,
+  TrendingUp as TrendingUpIcon,
+  Download as DownloadIcon,
+  Refresh as RefreshIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import UXAnalyticsDashboard from '../components/UXAnalyticsDashboard.jsx';
-import { uxAnalytics } from '../services/uxAnalytics';
+import { uxAnalytics } from '../services/uxAnalytics.jsx';
 import { logger } from '../utils/logger';
 
 function TabPanel(props) {
@@ -203,7 +203,7 @@ const UXAnalyticsPage = () => {
                   }}
                   onClick={() => handleSessionSelect(session.id)}
                 >
-                  <CardContent>
+                  
                     <Typography variant="h6" gutterBottom>
                       세션 {session.id.slice(-8)}
                     </Typography>
@@ -248,8 +248,8 @@ const UXAnalyticsPage = () => {
           
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             <Box sx={{ flex: '1 1 300px', minWidth }}>
-              <Card>
-                <CardContent>
+              
+                
                   <Typography variant="h6" gutterBottom>
                     시스템 성능
                   </Typography>
@@ -262,8 +262,8 @@ const UXAnalyticsPage = () => {
             </Box>
             
             <Box sx={{ flex: '1 1 300px', minWidth }}>
-              <Card>
-                <CardContent>
+              
+                
                   <Typography variant="h6" gutterBottom>
                     사용자 피드백
                   </Typography>

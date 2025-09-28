@@ -28,7 +28,7 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { plannerAPI, teamAPI } from '../services/api';
-import { Planner } from '../types';
+import { Planner } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';

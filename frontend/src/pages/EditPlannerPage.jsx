@@ -269,7 +269,7 @@ const EditPlannerPage = () => {
 
                     <Box sx={{ display: 'flex', gap: 1, flexDirection: { xs: 'column', md: 'row' } }}>
                       <FormControl fullWidth>
-                        <InputLabel>팀 선택</InputLabel>
+                        팀 선택</InputLabel>
                         <Select
                           value={teamId}
                           label="팀 선택"
@@ -289,7 +289,7 @@ const EditPlannerPage = () => {
                       </FormControl>
 
                       <FormControl fullWidth>
-                        <InputLabel>상태</InputLabel>
+                        상태</InputLabel>
                         <Select
                           value={status}
                           label="상태"

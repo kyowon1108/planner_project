@@ -20,7 +20,7 @@ import {
 } from '@mui/icons-material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { teamAPI } from '../services/api';
-import { Team } from '../types';
+import { Team } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';

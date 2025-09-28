@@ -58,14 +58,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { teamAPI, inviteAPI } from '../services/api';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
-import { Team, Invite } from '../types';
+import { Team, Invite } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
 import InviteMemberDialog from '../components/InviteMemberDialog.jsx';
 
 const TeamDetailPage = () => {
-  const { id } = useParams<{ id }>();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [team, setTeam] = useState(null);
@@ -152,7 +152,7 @@ const TeamDetailPage = () => {
     fetchTeam();
   };
 
-  const handleRoleChangeClick = (event.MouseEvent<HTMLElement>, memberId) => {
+  const handleRoleChangeClick = (event.MouseEvent, memberId) => {
     setRoleChangeAnchorEl(event.currentTarget);
     setSelectedMemberForRoleChange(memberId);
   };
@@ -686,7 +686,7 @@ const TeamDetailPage = () => {
                         />
                         
                         <FormControl size="small" sx={{ minWidth }}>
-                          <InputLabel>역할 필터</InputLabel>
+                          역할 필터</InputLabel>
                           <Select
                             value={memberRoleFilter}
                             onChange={(e) => setMemberRoleFilter(e.target.value)}
@@ -704,7 +704,7 @@ const TeamDetailPage = () => {
                         </FormControl>
                         
                         <FormControl size="small" sx={{ minWidth }}>
-                          <InputLabel>정렬 기준</InputLabel>
+                          정렬 기준</InputLabel>
                           <Select
                             value={memberSortBy}
                             onChange={(e) => setMemberSortBy(e.target.value)}
@@ -758,7 +758,7 @@ const TeamDetailPage = () => {
                       ) : (
                         filteredMembers.map((member, index) => (
                           <Fade in={animateIn} timeout={1400 + index * 100} key={member.id}>
-                            <Box>
+                            
                               <ListItem
                                 sx={{
                                   p,
@@ -771,7 +771,7 @@ const TeamDetailPage = () => {
                                   },
                                 }}
                               >
-                                <ListItemAvatar>
+                                
                                   <Avatar sx={{ bgcolor: 'primary.main' }}>
                                     {member.user_name?.charAt(0) || 'U'}
                                   </Avatar>
@@ -798,7 +798,7 @@ const TeamDetailPage = () => {
                                     </Box>
                                   }
                                   secondary={
-                                    <Box>
+                                    
                                       <Typography variant="body2" color="text.secondary">
                                         {member.user_email}
                                       </Typography>

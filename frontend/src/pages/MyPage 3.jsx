@@ -207,7 +207,7 @@ const MyPage = () => {
       >
         <Container maxWidth="md">
           <Slide direction="up" in={true} timeout={800}>
-            <Box>
+            
               {/* 헤더 */}
               <Box sx={{ textAlign: 'center', mb }}>
                 <Grow in={true} timeout={1000}>
@@ -246,7 +246,7 @@ const MyPage = () => {
 
               <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 1 }}>
                 {/* 프로필 정보 */}
-                <Box>
+                
                   <Slide direction="left" in={true} timeout={800}>
                     <Paper
                       elevation={24}
@@ -360,7 +360,7 @@ const MyPage = () => {
                 </Box>
 
                 {/* 비밀번호 변경 */}
-                <Box>
+                
                   <Slide direction="right" in={true} timeout={800}>
                     <Paper
                       elevation={24}
@@ -393,7 +393,7 @@ const MyPage = () => {
                           비밀번호 변경
                         </Button>
                       ) : (
-                        <Box>
+                        
                           <TextField
                             fullWidth
                             label="현재 비밀번호"
@@ -563,7 +563,7 @@ const MyPage = () => {
                 회원탈퇴 확인
               </Box>
             </DialogTitle>
-            <DialogContent>
+            
               <Typography sx={{ mb }}>
                 정말로 회원탈퇴를 하시겠습니까? 이 작업은 되돌릴 수 없습니다.
               </Typography>
@@ -592,7 +592,7 @@ const MyPage = () => {
                 }}
               />
             </DialogContent>
-            <DialogActions>
+            
               <Button onClick={() => setShowDeleteDialog(false)}>
                 취소
               </Button>

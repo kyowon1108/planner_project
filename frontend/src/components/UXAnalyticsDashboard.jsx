@@ -26,7 +26,7 @@ import {
   Visibility,
   Timeline,
 } from '@mui/icons-material';
-import { uxAnalytics, UXAnalysis } from '../services/uxAnalytics';
+import { uxAnalytics, UXAnalysis } from '../services/uxAnalytics.jsx';
 
 const UXAnalyticsDashboard = ({ sessionId }) => {
   const [analysis, setAnalysis] = useState(null);
@@ -118,8 +118,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
         {/* 사용성 점수 */}
         <Box sx={{ flex: '1 1 300px', minWidth }}>
-          <Card>
-            <CardContent>
+          
+            
               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
                 <TrendingUpIcon sx={{ mr }} />
                 사용성 점수
@@ -144,8 +144,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
 
         {/* 성능 메트릭 */}
         <Box sx={{ flex: '1 1 300px', minWidth }}>
-          <Card>
-            <CardContent>
+          
+            
               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
                 <SpeedIcon sx={{ mr }} />
                 성능 메트릭
@@ -166,7 +166,7 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
                   {Math.round(analysis.performanceMetrics.interactionTime / 1000)}초
                 </Typography>
               </Box>
-              <Box>
+              
                 <Typography variant="body2" color="text.secondary">
                   에러율
                 </Typography>
@@ -180,8 +180,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
 
         {/* 사용자 플로우 */}
         <Box sx={{ flex: '1 1 300px', minWidth }}>
-          <Card>
-            <CardContent>
+          
+            
               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
                 <TimelineIcon sx={{ mr }} />
                 사용자 플로우
@@ -203,8 +203,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
 
         {/* 개선 권장사항 */}
         <Box sx={{ flex: '1 1 300px', minWidth }}>
-          <Card>
-            <CardContent>
+          
+            
               <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
                 <ErrorIcon sx={{ mr }} />
                 개선 권장사항
@@ -222,8 +222,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
 
         {/* 히트맵 */}
         <Box sx={{ flex: '1 1 100%', minWidth }}>
-          <Card>
-            <CardContent>
+          
+            
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb }}>
                 <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
                   <VisibilityIcon sx={{ mr }} />
@@ -266,8 +266,8 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
         maxWidth="md"
         fullWidth
       >
-        <DialogTitle>클릭 히트맵 상세</DialogTitle>
-        <DialogContent>
+        클릭 히트맵 상세</DialogTitle>
+        
           <Box sx={{ height, bgcolor: 'grey.100', borderRadius, position: 'relative' }}>
             {analysis.heatmapData.map((point, index) => (
               <Box
@@ -292,7 +292,7 @@ const UXAnalyticsDashboard = ({ sessionId }) => {
             ))}
           </Box>
         </DialogContent>
-        <DialogActions>
+        
           <Button onClick={() => setShowHeatmap(false)}>닫기</Button>
         </DialogActions>
       </Dialog>

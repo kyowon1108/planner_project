@@ -212,13 +212,13 @@ const TagRecommendation = ({
 
       {/* 고도화된 분석 결과 */}
       {showAdvancedAnalysis && textAnalysis && (
-        <Box>
+        
           {/* 빠른 정보 카드 */}
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 1, mb }}>
             <Card variant="outlined" sx={{ p }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <TrendingIcon sx={{ fontSize }} color={getPriorityColor(textAnalysis.priority)} />
-                <Box>
+                
                   <Typography variant="caption" color="text.secondary">우선순위</Typography>
                   <Typography variant="body2" fontWeight="bold">
                     {textAnalysis.priority === 'high' ? '높음' : textAnalysis.priority === 'medium' ? '보통' : '낮음'}
@@ -230,7 +230,7 @@ const TagRecommendation = ({
             <Card variant="outlined" sx={{ p }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <CategoryIcon sx={{ fontSize, color: 'info.main' }} />
-                <Box>
+                
                   <Typography variant="caption" color="text.secondary">카테고리</Typography>
                   <Typography variant="body2" fontWeight="bold">{textAnalysis.category}</Typography>
                 </Box>
@@ -240,7 +240,7 @@ const TagRecommendation = ({
             <Card variant="outlined" sx={{ p }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <TimeIcon sx={{ fontSize, color: 'warning.main' }} />
-                <Box>
+                
                   <Typography variant="caption" color="text.secondary">예상 시간</Typography>
                   <Typography variant="body2" fontWeight="bold">
                     {textAnalysis.suggestions.estimated_time}분
@@ -313,7 +313,7 @@ const TagRecommendation = ({
                 )}
 
                 {/* 제안사항 */}
-                <Box>
+                
                   <Typography variant="caption" color="text.secondary">AI 제안</Typography>
                   <Box sx={{ mt: 0.5 }}>
                     <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight.4 }}>

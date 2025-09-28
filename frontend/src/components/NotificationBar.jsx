@@ -11,14 +11,14 @@ import {
   ListItemText,
 } from '@mui/material';
 import {
-  Notifications,
-  Group,
-  Assignment,
-  Article,
+  Notifications as NotificationsIcon,
+  Group as GroupIcon,
+  Assignment as AssignmentIcon,
+  Article as ArticleIcon,
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { inviteAPI, notificationAPI } from '../services/api';
-import { useWebSocket } from '../services/websocket';
+import { useWebSocket } from '../services/websocket.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 import NotificationToast from './NotificationToast.jsx';
 
@@ -330,7 +330,7 @@ const NotificationBar = ({ onInviteAccepted }) => {
                         position: 'relative',
                       }}
                     >
-                      <ListItemIcon>
+                      
                         <Box sx={{ color: getNotificationColor(notification.type) }}>
                           {getNotificationIcon(notification.type)}
                         </Box>
@@ -409,7 +409,7 @@ const NotificationBar = ({ onInviteAccepted }) => {
       {/* URL 파라미터 초대 알림 제거 (알림 메뉴에서 처리) */}
       {/* {showNotification && inviteCode && (
         <Collapse in={showNotification}>
-          <Alert>...</Alert>
+          ...</Alert>
         </Collapse>
       )} */}
 

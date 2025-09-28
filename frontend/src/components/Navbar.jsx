@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      
         <Typography
           variant="h6"
           component="div"

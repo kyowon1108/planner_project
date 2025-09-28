@@ -19,7 +19,7 @@ import {
 } from '@mui/material';
 import { Person } from '@mui/icons-material';
 import { authAPI, inviteAPI, teamAPI } from '../services/api';
-import { User } from '../types';
+import { User } from '../types.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 
@@ -241,7 +241,7 @@ const InviteMemberDialog = ({
           </Typography>
         </DialogTitle>
         
-        <DialogContent>
+        
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt }}>
             {/* 이메일 입력 */}
             <TextField
@@ -307,7 +307,7 @@ const InviteMemberDialog = ({
 
             {/* 역할 선택 */}
             <FormControl fullWidth disabled={isSending}>
-              <InputLabel>팀에서의 역할</InputLabel>
+              팀에서의 역할</InputLabel>
               <Select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
@@ -315,7 +315,7 @@ const InviteMemberDialog = ({
               >
                 {getRoleOptions().map(option => (
                   <MenuItem key={option.value} value={option.value}>
-                    <Box>
+                    
                       <Typography variant="body2">{option.label}</Typography>
                       <Typography variant="caption" color="text.secondary">
                         {option.description}
@@ -329,22 +329,22 @@ const InviteMemberDialog = ({
             {/* 역할 설명 */}
             <Box sx={{ p: 0.5, bgcolor: '#f5f5f5', borderRadius }}>
               <Typography variant="body2" color="text.secondary">
-                <strong>역할별 권한:</strong>
+                역할별 권한:</strong>
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-                • <strong>관리자:</strong> 거의 모든 권한을 가집니다
+                • 관리자:</strong> 거의 모든 권한을 가집니다
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                • <strong>매니저:</strong> 팀 관리와 콘텐츠 관리 권한을 가집니다
+                • 매니저:</strong> 팀 관리와 콘텐츠 관리 권한을 가집니다
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                • <strong>편집자:</strong> 콘텐츠 생성과 수정 권한을 가집니다
+                • 편집자:</strong> 콘텐츠 생성과 수정 권한을 가집니다
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                • <strong>조회자:</strong> 읽기 전용 권한을 가집니다
+                • 조회자:</strong> 읽기 전용 권한을 가집니다
               </Typography>
               <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                • <strong>게스트:</strong> 제한적인 읽기 권한을 가집니다
+                • 게스트:</strong> 제한적인 읽기 권한을 가집니다
               </Typography>
             </Box>
 

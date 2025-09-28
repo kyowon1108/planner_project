@@ -205,7 +205,7 @@ const CreatePostPage = () => {
                     />
 
                     <FormControl fullWidth sx={{ mb: 3 }}>
-                      <InputLabel>팀 선택</InputLabel>
+                      팀 선택</InputLabel>
                       <Select
                         value={formData.team_id}
                         label="팀 선택"
@@ -233,7 +233,7 @@ const CreatePostPage = () => {
                     </FormControl>
 
                     <FormControl fullWidth sx={{ mb: 3 }}>
-                      <InputLabel>카테고리</InputLabel>
+                      카테고리</InputLabel>
                       <Select
                         value={formData.category}
                         label="카테고리"

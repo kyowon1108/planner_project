@@ -13,9 +13,9 @@ import {
   Typography,
 } from '@mui/material';
 import {
-  Search,
-  Tune,
-  Clear,
+  Search as SearchIcon,
+  Tune as TuneIcon,
+  Clear as ClearIcon,
 } from '@mui/icons-material';
 
 const AdvancedSearchFilter = ({
@@ -55,7 +55,7 @@ const AdvancedSearchFilter = ({
         />
         
         <FormControl size="small" sx={{ minWidth }}>
-          <InputLabel>검색 타입</InputLabel>
+          검색 타입</InputLabel>
           <Select
             value={searchType}
             onChange={(e) => onSearchTypeChange(e.target.value)}

@@ -167,7 +167,7 @@ const TeamProductivityInsights = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <TeamIcon sx={{ mr, color: 'primary.main', fontSize }} />
-          <Box>
+          
             <Typography variant="h4" component="h1" gutterBottom>
               👥 팀 생산성 인사이트
             </Typography>
@@ -179,7 +179,7 @@ const TeamProductivityInsights = () => {
         
         <Box sx={{ display: 'flex', gap: 1 }}>
           <FormControl size="small" sx={{ minWidth }}>
-            <InputLabel>기간</InputLabel>
+            기간</InputLabel>
             <Select
               value={timePeriod}
               label="기간"
@@ -211,7 +211,7 @@ const TeamProductivityInsights = () => {
       {/* 에러 상태 */}
       {error && (
         <Alert severity="error" sx={{ mb }}>
-          <AlertTitle>오류</AlertTitle>
+          오류</AlertTitle>
           {error}
           <Button size="small" onClick={loadTeamInsights} sx={{ mt }}>
             다시 시도
@@ -223,8 +223,8 @@ const TeamProductivityInsights = () => {
       {!loading && teamMembers.length > 0 && (
         <Grid container spacing={3} sx={{ mb }}>
           <Grid item xs={12}>
-            <Card>
-              <CardContent>
+            
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <People sx={{ mr }} />
                   <Typography variant="h6">팀 멤버 현황</Typography>
@@ -331,7 +331,7 @@ const TeamProductivityInsights = () => {
           {/* 워크로드 밸런스 */}
           <Grid item xs={12} md={6}>
             <Card sx={{ height: '100%' }}>
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   {getBalanceStatusIcon(teamData.workload_balance.status)}
                   <Typography variant="h6" sx={{ ml }}>
@@ -365,7 +365,7 @@ const TeamProductivityInsights = () => {
           {/* 협업 패턴 */}
           <Grid item xs={12} md={6}>
             <Card sx={{ height: '100%' }}>
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <CollaborationIcon color="primary" />
                   <Typography variant="h6" sx={{ ml }}>
@@ -397,12 +397,12 @@ const TeamProductivityInsights = () => {
                   </Box>
                 </Box>
                 
-                <Box>
+                
                   <Typography variant="body2" color="text.secondary">
-                    커뮤니케이션 빈도: <strong>{teamData.collaboration_patterns.communication_frequency}</strong>
+                    커뮤니케이션 빈도: {teamData.collaboration_patterns.communication_frequency}</strong>
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    지식 공유 점수: <strong>{teamData.collaboration_patterns.knowledge_sharing_score}/10</strong>
+                    지식 공유 점수: {teamData.collaboration_patterns.knowledge_sharing_score}/10</strong>
                   </Typography>
                 </Box>
               </CardContent>
@@ -412,7 +412,7 @@ const TeamProductivityInsights = () => {
           {/* 최적 미팅 시간 */}
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%' }}>
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <ClockIcon color="primary" />
                   <Typography variant="h6" sx={{ ml }}>
@@ -438,7 +438,7 @@ const TeamProductivityInsights = () => {
           {/* 팀 강점 */}
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%' }}>
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <TrendingIcon sx={{ color: 'success.main' }} />
                   <Typography variant="h6" sx={{ ml }}>
@@ -466,7 +466,7 @@ const TeamProductivityInsights = () => {
           {/* 개선 영역 */}
           <Grid item xs={12} md={4}>
             <Card sx={{ height: '100%' }}>
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <MetricsIcon sx={{ color: 'warning.main' }} />
                   <Typography variant="h6" sx={{ ml }}>
@@ -500,7 +500,7 @@ const TeamProductivityInsights = () => {
                   : 'linear-gradient(135deg, #3f51b5 0%, #9c27b0 100%)',
               }}
             >
-              <CardContent>
+              
                 <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
                   <InsightsIcon sx={{ mr, color: 'white' }} />
                   <Typography variant="h6" sx={{ color: 'white' }}>
@@ -519,7 +519,7 @@ const TeamProductivityInsights = () => {
                       }}
                     >
                       <Typography variant="body2">
-                        <strong>생산성 트렌드:</strong> 팀 전체 생산성이 지난 주 대비 12% 향상되었습니다.
+                        생산성 트렌드:</strong> 팀 전체 생산성이 지난 주 대비 12% 향상되었습니다.
                         김개발님의 작업 효율성이 특히 눈에 띕니다.
                       </Typography>
                     </Alert>
@@ -534,7 +534,7 @@ const TeamProductivityInsights = () => {
                       }}
                     >
                       <Typography variant="body2">
-                        <strong>주의 사항:</strong> 워크로드 불균형이 감지되었습니다.
+                        주의 사항:</strong> 워크로드 불균형이 감지되었습니다.
                         작업 재분배를 통해 번아웃을 예방하세요.
                       </Typography>
                     </Alert>
@@ -543,7 +543,7 @@ const TeamProductivityInsights = () => {
                 
                 <Box sx={{ mt }}>
                   <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.9)', mb }}>
-                    💡 <strong>핵심 제안사항:</strong>
+                    💡 핵심 제안사항:</strong>
                   </Typography>
                   <Grid container spacing={1}>
                     <Grid item xs={12} md={4}>
@@ -581,7 +581,7 @@ const TeamProductivityInsights = () => {
       {/* 빈 상태 */}
       {!loading && !teamData && !error && (
         <Card sx={{ textAlign: 'center', py }}>
-          <CardContent>
+          
             <TeamIcon sx={{ fontSize, color: 'text.secondary', mb }} />
             <Typography variant="h6" color="text.secondary" gutterBottom>
               팀 데이터가 없습니다

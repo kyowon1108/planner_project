@@ -39,14 +39,14 @@ import {
 } from '@mui/icons-material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { todoAPI, plannerAPI, teamAPI } from '../services/api';
-import { Todo, Planner } from '../types';
+import { Todo, Planner } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
 import SortSelect, { SortOption } from '../components/SortSelect.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
-import { usePermissions } from '../hooks/usePermissions';
+import { usePermissions } from '../hooks/usePermissions.jsx';
 
 const TodosPage = () => {
   const navigate = useNavigate();
@@ -329,7 +329,7 @@ const TodosPage = () => {
         <Container maxWidth="lg" sx={{ mt, mb }}>
           <Slide direction="down" in={animateIn} timeout={600}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
-              <Box>
+              
                 <Typography 
                   variant="h4" 
                   component="h1"
@@ -427,7 +427,7 @@ const TodosPage = () => {
           </Slide>
 
           <Slide direction="up" in={animateIn} timeout={800}>
-            <Box>
+            
               {/* 통합 검색 및 필터링 */}
               <AdvancedSearchFilter
                 searchTerm={searchTerm}
@@ -440,7 +440,7 @@ const TodosPage = () => {
                 {/* 고급 필터 영역 */}
                 <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>상태 필터</InputLabel>
+                    상태 필터</InputLabel>
                     <Select
                       value={selectedStatus}
                       onChange={(e) => setSelectedStatus(e.target.value)}
@@ -452,7 +452,7 @@ const TodosPage = () => {
                     </Select>
                   </FormControl>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>팀 필터</InputLabel>
+                    팀 필터</InputLabel>
                     <Select
                       value={selectedTeam}
                       onChange={(e) => setSelectedTeam(e.target.value)}
@@ -467,7 +467,7 @@ const TodosPage = () => {
                     </Select>
                   </FormControl>
                   <FormControl size="small" sx={{ minWidth }}>
-                    <InputLabel>정렬</InputLabel>
+                    정렬</InputLabel>
                     <Select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
@@ -755,7 +755,7 @@ const TodosPage = () => {
             />
             
             <FormControl fullWidth>
-              <InputLabel>플래너</InputLabel>
+              플래너</InputLabel>
               <Select
                 value={newTodoPlannerId}
                 onChange={(e) => handlePlannerChange(e.target.value)}
@@ -782,7 +782,7 @@ const TodosPage = () => {
                 
                 {/* 개별 사용자 선택 */}
                 <FormControl fullWidth>
-                  <InputLabel>담당자 선택 (여러 명 선택 가능)</InputLabel>
+                  담당자 선택 (여러 명 선택 가능)</InputLabel>
                   <Select
                     multiple
                     value={newTodoAssignedTo}
@@ -818,7 +818,7 @@ const TodosPage = () => {
             )}
             
             <FormControl fullWidth>
-              <InputLabel>우선순위</InputLabel>
+              우선순위</InputLabel>
               <Select
                 value={newTodoPriority}
                 onChange={(e) => setNewTodoPriority(e.target.value)}

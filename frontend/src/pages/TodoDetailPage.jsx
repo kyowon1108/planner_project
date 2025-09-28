@@ -28,7 +28,7 @@ import {
   CalendarToday,
 } from '@mui/icons-material';
 import { todoAPI, plannerAPI } from '../services/api';
-import { Todo, Planner } from '../types';
+import { Todo, Planner } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
@@ -36,7 +36,7 @@ import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 
 const TodoDetailPage = () => {
-  const { id } = useParams<{ id }>();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [todo, setTodo] = useState(null);

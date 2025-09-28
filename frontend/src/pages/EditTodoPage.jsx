@@ -31,13 +31,13 @@ import {
   Edit,
 } from '@mui/icons-material';
 import { todoAPI, plannerAPI, teamAPI } from '../services/api';
-import { Todo, Planner } from '../types';
+import { Todo, Planner } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
-import { usePermissions } from '../hooks/usePermissions';
+import { usePermissions } from '../hooks/usePermissions.jsx';
 
 const EditTodoPage = () => {
   const { id } = useParams();
@@ -310,7 +310,7 @@ const EditTodoPage = () => {
                   />
                   
                   <FormControl fullWidth sx={{ mb }}>
-                    <InputLabel>플래너 선택 *</InputLabel>
+                    플래너 선택 *</InputLabel>
                     <Select
                       value={plannerId}
                       label="플래너 선택 *"
@@ -372,7 +372,7 @@ const EditTodoPage = () => {
                       
                       {/* 개별 사용자 선택 */}
                       <FormControl fullWidth>
-                        <InputLabel>담당자 선택 (여러 명 선택 가능)</InputLabel>
+                        담당자 선택 (여러 명 선택 가능)</InputLabel>
                         <Select
                           multiple
                           value={assignedTo}
@@ -408,7 +408,7 @@ const EditTodoPage = () => {
                   )}
                   
                   <FormControl fullWidth sx={{ mb }}>
-                    <InputLabel>우선순위</InputLabel>
+                    우선순위</InputLabel>
                     <Select
                       value={priority}
                       label="우선순위"

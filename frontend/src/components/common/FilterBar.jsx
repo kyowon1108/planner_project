@@ -74,7 +74,7 @@ const FilterBar = ({
               borderRadius,
             }}
           >
-            <InputLabel>{filter.label}</InputLabel>
+            {filter.label}</InputLabel>
             <Select
               value={value}
               onChange={(e) => onFilterChange(filter.key, e.target.value)}
@@ -194,7 +194,7 @@ const FilterBar = ({
   };
 
   return (
-    <Box>
+    
       {/* 기본 필터 */}
       <Box
         sx={{

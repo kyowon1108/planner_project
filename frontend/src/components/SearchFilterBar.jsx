@@ -40,7 +40,7 @@ const SearchFilterBar = ({
     setLocalSearchTerm(searchTerm);
   }, [searchTerm]);
 
-  const handleSearchChange = (event.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event.ChangeEvent) => {
     const value = event.target.value;
     setLocalSearchTerm(value);
     onSearchChange(value);
@@ -103,7 +103,7 @@ const SearchFilterBar = ({
 
         {/* 필터 드롭다운 */}
         <FormControl size="small" sx={{ minWidth }}>
-          <InputLabel>{filterLabel}</InputLabel>
+          {filterLabel}</InputLabel>
           <Select
             value={filterValue}
             onChange={handleFilterChange}

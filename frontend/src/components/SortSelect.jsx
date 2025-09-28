@@ -14,7 +14,7 @@ export const SortSelect = ({
 
   return (
     <FormControl size={size} sx={{ minWidth }}>
-      <InputLabel>{label}</InputLabel>
+      {label}</InputLabel>
       <Select
         value={value}
         label={label}

@@ -38,7 +38,7 @@ import {
 } from '@mui/icons-material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { postAPI, likeAPI, replyAPI } from '../services/api';
-import { Post, Reply } from '../types';
+import { Post, Reply } from '../types.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ErrorDisplay from '../components/ErrorDisplay.jsx';
 import Navbar from '../components/Navbar.jsx';
@@ -47,7 +47,7 @@ import { useTheme } from '../contexts/ThemeContext.jsx';
 import { formatDateTime } from '../utils/dateUtils';
 
 const PostDetailPage = () => {
-  const { id } = useParams<{ id }>();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [post, setPost] = useState(null);
@@ -242,7 +242,7 @@ const PostDetailPage = () => {
     }
   };
 
-  const handlePageChange = (event.ChangeEvent<unknown>, value) => {
+  const handlePageChange = (event.ChangeEvent, value) => {
     setReplyPage(value);
     fetchReplies(value);
   };
@@ -606,7 +606,7 @@ const PostDetailPage = () => {
                       </Box>
 
                       {/* 댓글 목록 */}
-                      <Box>
+                      
                         {(!replies || replies.length === 0) ? (
                           <Typography variant="body2" sx={{ 
                             textAlign: 'center', 

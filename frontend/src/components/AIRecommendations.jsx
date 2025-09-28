@@ -40,9 +40,6 @@ import { useAuth } from '../contexts/AuthContext.jsx';
 import { useTheme } from '../contexts/ThemeContext.jsx';
 import { aiAPI, ProductivityInsights } from '../services/api';
 
-;
-}
-
 const AIRecommendations = () => {
   const { user } = useAuth();
   const { darkMode } = useTheme();
@@ -147,7 +144,7 @@ const AIRecommendations = () => {
       {/* 헤더 */}
       <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
         <MagicIcon sx={{ mr, color: 'primary.main', fontSize }} />
-        <Box>
+        
           <Typography variant="h4" component="h1" gutterBottom>
             🤖 AI 스마트 추천
           </Typography>
@@ -170,7 +167,7 @@ const AIRecommendations = () => {
       {/* 생산성 인사이트 카드 */}
       {insights && (
         <Card sx={{ mb, background ? 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)' : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-          <CardContent>
+          
             <Box sx={{ display: 'flex', alignItems: 'center', mb }}>
               <InsightsIcon sx={{ mr, color: 'white' }} />
               <Typography variant="h6" sx={{ color: 'white' }}>
@@ -265,7 +262,7 @@ const AIRecommendations = () => {
 
       {error && (
         <Alert severity="error" sx={{ mb }}>
-          <AlertTitle>오류</AlertTitle>
+          오류</AlertTitle>
           {error}
           <Button size="small" onClick={loadRecommendations} sx={{ mt }}>
             다시 시도
@@ -275,7 +272,7 @@ const AIRecommendations = () => {
 
       {/* 추천 목록 */}
       {!loading && recommendations.length > 0 && (
-        <Box>
+        
           <Typography variant="h6" sx={{ mb, display: 'flex', alignItems: 'center' }}>
             <TaskIcon sx={{ mr }} />
             개인화된 할 일 추천 ({recommendations.length}개)
@@ -283,7 +280,7 @@ const AIRecommendations = () => {
           
           {recommendations.map((recommendation, index) => (
             <Card key={index} sx={{ mb, position: 'relative' }}>
-              <CardContent>
+              
                 {/* 신뢰도 배지 */}
                 <Box sx={{ position: 'absolute', top, right }}>
                   <Badge
@@ -344,7 +341,7 @@ const AIRecommendations = () => {
                   </Box>
 
                   {/* 추천 이유 (확장 가능) */}
-                  <Box>
+                  
                     <Button
                       size="small"
                       onClick={() => setExpandedCard(expandedCard === index ? null : index)}
@@ -357,7 +354,7 @@ const AIRecommendations = () => {
                     <Collapse in={expandedCard === index}>
                       <Alert severity="info" sx={{ mt }}>
                         <Typography variant="body2">
-                          🤔 <strong>AI 분석:</strong> {recommendation.reasoning}
+                          🤔 AI 분석:</strong> {recommendation.reasoning}
                         </Typography>
                       </Alert>
                     </Collapse>
@@ -367,7 +364,7 @@ const AIRecommendations = () => {
                 {/* 액션 버튼 */}
                 <Divider sx={{ my }} />
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Box>
+                  
                     <Button
                       variant="contained"
                       size="small"
@@ -423,7 +420,7 @@ const AIRecommendations = () => {
       {/* 빈 상태 */}
       {!loading && recommendations.length === 0 && !error && (
         <Card sx={{ textAlign: 'center', py }}>
-          <CardContent>
+          
             <AIIcon sx={{ fontSize, color: 'text.secondary', mb }} />
             <Typography variant="h6" color="text.secondary" gutterBottom>
               추천할 작업이 없습니다

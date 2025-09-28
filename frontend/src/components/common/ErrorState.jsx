@@ -160,7 +160,7 @@ const ErrorState = ({
         )
       }
     >
-      <AlertTitle>{getErrorTitle()}</AlertTitle>
+      {getErrorTitle()}</AlertTitle>
       {getErrorMessage()}
     </Alert>
   );
@@ -185,7 +185,7 @@ const ErrorState = ({
                  severity === 'warning' ? 'warning.main' : 'info.main',
         }}
       />
-      <Box>
+      
         <Typography
           variant={size === 'large' ? 'h5' : size === 'small' ? 'h6' : 'h6'}
           component="h2"
